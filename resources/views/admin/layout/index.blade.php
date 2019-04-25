@@ -104,7 +104,7 @@
                                     <a href="/admin/user/list">{{ __('Tài khoản') }}</a>
                                 </li>
                                 <li>
-                                   <a href="">{{ __('Cấu hình website') }}</a>
+                                   <a href="/admin/setting/">{{ __('Cấu hình website') }}</a>
                                 </li>
                             </ul>
                         </li>
