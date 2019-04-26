@@ -36,7 +36,13 @@
                                 <div class="row">
                                     <div class="col-6">
                                         <label class="text-right" for="category"> Danh mục cha (<span class="text-danger">*</span>)</label>
-
+                                        <select name="basic[]" multiple="multiple" class="active">
+                                            <option value="AL">Alabama</option>
+                                            <option value="AK">Alaska</option>
+                                            <option value="AZ">Arizona</option>
+                                            <option value="AR">Arkansas</option>
+                                            <option value="CA">California</option>
+                                        </select>
                                         <div class="clearFic"></div>
                                     </div>
                                     <div class="col-6">
@@ -97,4 +103,11 @@
             </div>
         </div>
     </div>
+@endsection
+@section('script')
+    <script>
+        $(function () {
+           $('select[multiple]').multiselect();
+        });
+    </script>
 @endsection

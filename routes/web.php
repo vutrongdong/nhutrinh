@@ -66,5 +66,6 @@ Route::group(['prefix' => 'admin'], function(){
 
 	Route::group(['prefix' => 'setting'], function(){
 		Route::get('/', 'SettingController@getSetting');
+		Route::post('/update', 'SettingController@update');
 	});
 });
