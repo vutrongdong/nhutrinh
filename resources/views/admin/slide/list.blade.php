@@ -44,7 +44,7 @@
                                         <tr class="odd gradeX" align="center">
                                             <td>{{ $loop->iteration }}</td>
                                             <td>{{$slide->title}}</td>
-                                            <td><img width="200px" src="/assets/images/user.jpeg" alt="user"></td>
+                                            <td><img width="200px" src="/admin_assets/images/app10.png" alt="slide"></td>
                                             <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="admin/slide/delete/{{$slide->id}}">Xóa</a></td>
                                             <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="admin/slide/edit/{{$slide->id}}">Sửa</a></td>
                                         </tr>

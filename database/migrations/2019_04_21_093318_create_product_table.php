@@ -22,6 +22,7 @@ class CreateProductTable extends Migration
             $table->integer('date')->nullable();
             $table->string('image');
             $table->string('image_path');
+            $table->integer('category_id')->unsigned()->index();
             $table->string('note');
             $table->boolean('active')->default(true);
             $table->timestamps();
