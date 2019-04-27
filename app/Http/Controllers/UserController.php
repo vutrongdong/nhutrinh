@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\UserAddRequest;
 use App\Http\Requests\UserUpdateRequest;
+use App\Http\Requests\UserResetPassRequest;
 use Illuminate\Support\Facades\Auth;
 
 use App\User;
@@ -53,6 +54,18 @@ class UserController extends Controller
         } else {
             return back()->with('errorCheck', 'Tài khoản không được chứa ký tự đặc biệt và khoảng trắng');
         }
+    }
+
+    public function getEditPass($id){
+        $user = User::find($id);
+        return view('admin.user.reset')->with(compact('user'));
+    }
+
+    public function postEditPass(UserResetPassRequest $request, $id){
+        $user = User::find($id);
+        $user->password = $request->password;
+        $user->save();
+        return back()->with('thongbao', 'Đổi mật khẩu thành công');
     }
 
     public function destroy($id){

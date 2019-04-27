@@ -28,6 +28,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['adminLogin']], function(){
 		Route::post('add', 'UserController@postAdd');
 		Route::get('edit/{id}', 'UserController@getEdit');
 		Route::post('edit/{id}', 'UserController@postEdit');
+		Route::get('reset_pass/{id}', 'UserController@getEditPass');
+		Route::post('reset_pass/{id}', 'UserController@postEditPass');
 		Route::get('delete/{id}', 'UserController@destroy');
 	});
 	//Slide

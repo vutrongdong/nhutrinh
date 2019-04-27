@@ -42,7 +42,7 @@
                             <div class="dropdown-item noti-title">
                                 <h5 class="text-overflow"><small><i class="fas fa-user"></i> Hi, {{Auth::user()->name}}  </small> </h5>
                             </div>
-                            <a class="dropdown-item notify-item" href="admin/user/sua/{{Auth::user()->id}}">
+                            <a class="dropdown-item notify-item" href="admin/user/reset_pass/{{Auth::user()->id}}">
                                 <i class="fas fa-key"></i> {{ __('Thay đổi mật khẩu') }}
                             </a>
                             <a href="javascript:void(0);" class="dropdown-item notify-item" onclick="event.preventDefault();
