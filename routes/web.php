@@ -5,7 +5,7 @@ Route::get('/login', 'UserController@getDangnhapAdmin');
 Route::post('/login', 'UserController@postDangnhapAdmin');
 Route::post('/logout', 'UserController@getDangxuatAdmin');
 
-Route::group(['prefix' => 'admin'], function(){
+Route::group(['prefix' => 'admin', 'middleware' => ['adminLogin']], function(){
 	Route::get('/', function () {
 	    return view('admin.dasboard.index');
 	});
