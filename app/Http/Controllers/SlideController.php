@@ -6,11 +6,12 @@ use Illuminate\Http\Request;
 use App\Slide;
 class SlideController extends Controller
 {
-    //
-    public function getAll(){
-    	$slides = Slide::orderBy('id', 'desc')->paginate(5);
-    	return view('admin.slide.list')->with(compact('slides'));;
+    public function index(Request $request){
+        $search = $request->get('search');
+        $slides = Slide::orderBy('id', 'desc')->where('title', 'like', '%'.$search.'%')->paginate(5);
+        return view('admin.slide.list')->with(compact('slides', 'search'));
     }
+
     public function getAdd(){
         return view('admin.slide.add');
     }

@@ -9,9 +9,11 @@ use App\Category;
 
 class CategoryController extends Controller
 {
-    public function getAll(){
-    	$category = Category::with('parent')->orderBy('id', 'desc')->paginate(5);
-    	return view('admin.category.list', ['category' => $category]);
+    public function index(Request $request)
+    {
+        $search = $request->get('search');
+        $category = Category::with('parent')->orderBy('id', 'desc')->where('title', 'like', '%'.$search.'%')->paginate(5);
+        return view('admin.category.list')->with(compact('category', 'search'));
     }
 
     public function getAdd(){

@@ -7,21 +7,17 @@ use App\Http\Requests\UserAddRequest;
 use App\Http\Requests\UserUpdateRequest;
 use App\Http\Requests\UserResetPassRequest;
 use Illuminate\Support\Facades\Auth;
-
 use App\User;
+
 class UserController extends Controller
 {
-    //
-    public function index()
-    {
-        return view('admin.layout.index');
-    }
     
-    public function getAll(){
-        $users = User::orderBy('id', 'desc')->paginate(5);
-        return view('admin.user.list', ['users' => $users]);
+    public function index(Request $request){
+        $search = $request->get('search');
+        $users = User::orderBy('id', 'desc')->where('name', 'like', '%'.$search.'%')->paginate(5);
+        return view('admin.user.list')->with(compact('users', 'search'));
     }
-    
+
     public function getAdd()
     {
     	return view('admin.user.add');

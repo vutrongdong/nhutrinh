@@ -17,9 +17,11 @@
             </div>
             <div class="card">
                 <div class="card-header">
-                    <div class="form-group has-search">
-                        <input type="text" class="form-control" placeholder="Tìm kiếm...">
-                    </div>
+                    <form action="/admin/blog/list" method="get">
+                        <div class="form-group has-search">
+                            <input value="{{ $search }}" name="search" type="search" class="form-control" placeholder="Tìm kiếm...">
+                        </div>
+                    </form>
                 </div>
                 @if(session('thongbao'))
                     <div class='alert alert-success'>

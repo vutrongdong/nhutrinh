@@ -11,10 +11,11 @@ use App\Category;
 
 class ProductController extends Controller
 {
-    public function getAll()
+    public function index(Request $request)
     {
-        $products = Product::with('category')->orderBy('id','desc')->paginate(5);
-        return view('admin.product.list', ['products' => $products]);
+        $search = $request->get('search');
+        $products = Product::with('category')->orderBy('id', 'desc')->where('title', 'like', '%'.$search.'%')->paginate(5);
+        return view('admin.product.list')->with(compact('products', 'search'));
     }
 
     public function getAdd()

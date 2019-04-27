@@ -10,10 +10,11 @@ use App\Blog;
 
 class BlogController extends Controller
 {
-    public function getAll()
+    public function index(Request $request)
     {
-        $blogs = Blog::with('category')->paginate(5);
-        return view('admin.blog.list', ['blogs' => $blogs]);
+        $search = $request->get('search');
+        $blogs = Blog::with('category')->orderBy('id', 'desc')->where('title', 'like', '%'.$search.'%')->paginate(5);
+        return view('admin.blog.list')->with(compact('blogs', 'search'));
     }
 
     public function show($id)

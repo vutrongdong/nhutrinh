@@ -11,7 +11,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['adminLogin']], function(){
 	});
 	// category
 	Route::group(['prefix' => 'category'], function(){
-		Route::get('list', 'CategoryController@getAll');
+		Route::get('list', 'CategoryController@index');
 
 		Route::get('add', 'CategoryController@getAdd');
 		Route::post('add', 'CategoryController@postAdd');
@@ -23,7 +23,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['adminLogin']], function(){
 	});
 	//User
 	Route::group(['prefix' => 'user'], function(){
-		Route::get('list', 'UserController@getAll');
+		Route::get('list', 'UserController@index');
 		Route::get('add', 'UserController@getAdd');
 		Route::post('add', 'UserController@postAdd');
 		Route::get('edit/{id}', 'UserController@getEdit');
@@ -34,7 +34,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['adminLogin']], function(){
 	});
 	//Slide
 	Route::group(['prefix' => 'slide'], function(){
-		Route::get('list', 'SlideController@getAll');
+		Route::get('list', 'SlideController@index');
 
 		Route::get('add', 'SlideController@getAdd');
 		Route::post('add', 'SlideController@postAdd');
@@ -47,7 +47,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['adminLogin']], function(){
 
 	//Product
 	Route::group(['prefix' => 'product'], function(){
-		Route::get('list', 'ProductController@getAll');
+		Route::get('list', 'ProductController@index');
 
 		Route::get('add', 'ProductController@getAdd');
 		Route::post('add', 'ProductController@postAdd');
@@ -60,7 +60,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['adminLogin']], function(){
 
 	//Blog
 	Route::group(['prefix' => 'blog'], function(){
-		Route::get('list', 'BlogController@getAll');
+		Route::get('list', 'BlogController@index');
 
 		Route::get('add', 'BlogController@getAdd');
 		Route::post('add', 'BlogController@postAdd');
