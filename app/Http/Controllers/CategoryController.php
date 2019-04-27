@@ -28,6 +28,7 @@ class CategoryController extends Controller
 
     	return redirect('admin/category/list')->with('thongbao', 'Bạn đã thêm danh mục thành công');    	
     }
+
     public function getEdit($id){
     	$category = Category::find($id);
         $categorySelect = Category::where([
@@ -36,6 +37,7 @@ class CategoryController extends Controller
                 ])->get();
     	return view('admin.category.edit')->with(compact('categorySelect', 'category'));
     }
+
     public function postEdit(CategoryUpdateRequest $request, $id){
     	$category = Category::find($id);
     	$category->title = $request->title;
@@ -44,6 +46,7 @@ class CategoryController extends Controller
     	$category->save();
     	return redirect('admin/category/list')->with('thongbao', 'Bạn đã sửa danh mục thành công');    	
     }
+    
     public function destroy($id){
     	$category = Category::find($id);
     	$category->delete();

@@ -47,7 +47,7 @@
                                             <td>{{ $loop->iteration }}</td>
                                             <td>{{$product->title}}</td>
                                             <td>{{$product->code}}</td>
-                                            <td>{{$product->price}}</td>
+                                            <td>{{number_format($product->price, 0, ',', '.').' VNĐ'}}</td>
                                             <td>
                                                 @if($product->active)
                                                     <div class="checkbox checkbox-success">

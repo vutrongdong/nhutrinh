@@ -4,7 +4,7 @@
         <div class="col-12">
             <div style="margin-left: 15px;">
                 <div class="btn-group pull-right m-t-15">
-                    <a href="admin/category/add" class="btn btn-success btn-sm" style="color: #fff; text-decoration: none;margin-left: 10px">Thêm mới người dùng</a>
+                    <a href="admin/user/add" class="btn btn-success btn-sm" style="color: #fff; text-decoration: none;margin-left: 10px">Thêm mới người dùng</a>
                 </div>
                 <h4 class="page-title">
                     Người dùng
