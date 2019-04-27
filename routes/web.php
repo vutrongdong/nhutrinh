@@ -24,6 +24,11 @@ Route::group(['prefix' => 'admin', 'middleware' => ['adminLogin']], function(){
 	//User
 	Route::group(['prefix' => 'user'], function(){
 		Route::get('list', 'UserController@getAll');
+		Route::get('add', 'UserController@getAdd');
+		Route::post('add', 'UserController@postAdd');
+		Route::get('edit/{id}', 'UserController@getEdit');
+		Route::post('edit/{id}', 'UserController@postEdit');
+		Route::get('delete/{id}', 'UserController@destroy');
 	});
 	//Slide
 	Route::group(['prefix' => 'slide'], function(){
