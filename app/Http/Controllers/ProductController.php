@@ -77,6 +77,17 @@ class ProductController extends Controller
         }
         return view('admin.product.edit')->with(compact('category_product', 'dates', 'product', 'cate_selected'));
     }
+
+    public function changeActive(Request $request, $id) {
+        $product = Product::find($id);
+        $data = [];
+        if($request->active == 'true') {
+            $data['active'] = 1;
+        } else {
+            $data['active'] = 0;
+        }
+        $product->fill($data)->save();
+    }
     
     public function postEdit(ProductUpdateRequest $request, $id)
     {

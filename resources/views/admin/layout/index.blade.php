@@ -14,8 +14,6 @@
     <base href="{{asset('')}}" />
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
-    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Raleway'>
-<link rel='stylesheet' href='https://fonts.googleapis.com/icon?family=Material+Icons'>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
     <link href="css/app.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="admin_assets/plugins/bootstrap-datepicker/css/bootstrap-datepicker.min.css">
@@ -25,6 +23,7 @@
     <link rel="stylesheet" type="text/css" href="admin_assets/plugins/sweet-alert2/sweetalert2.min.css">
     <script src="admin_assets/js/modernizr.min.js"></script>
     <script src="admin_assets/ckeditor/ckeditor.js" ></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="js/muilty_select.js"></script>
 </head>
 <body class="fixed-left">
@@ -139,5 +138,6 @@
             document.multiselect('#selectWhenAdd');
         }
     </script>
+    @yield('script')
 </body>
 </html>

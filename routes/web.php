@@ -56,6 +56,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['adminLogin']], function(){
 		Route::post('edit/{id}', 'ProductController@postEdit');
 
 		Route::get('delete/{id}', 'ProductController@destroy');
+		Route::post('change_active/{id}', 'ProductController@changeActive');
 	});
 
 	//Blog
@@ -67,6 +68,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['adminLogin']], function(){
 
 		Route::get('edit/{id}', 'BlogController@getEdit');
 		Route::post('edit/{id}', 'BlogController@postEdit');
+		Route::post('change_active/{id}', 'BlogController@changeActive');
 
 		Route::get('delete/{id}', 'BlogController@destroy');
 	});

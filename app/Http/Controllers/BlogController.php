@@ -62,6 +62,17 @@ class BlogController extends Controller
         return redirect('admin/blog/list')->with('thongbao', 'Bạn đã sửa bài viết thành công');
     }
 
+    public function changeActive(Request $request, $id) {
+        $blog = Blog::find($id);
+        $data = [];
+        if($request->active == 'true') {
+            $data['active'] = 1;
+        } else {
+            $data['active'] = 0;
+        }
+        $blog->fill($data)->save();
+    }
+
     public function destroy($id)
     {
         $blog = Blog::find($id);
