@@ -44,7 +44,6 @@
                                         @foreach($category_product as $category)
                                             <option value="{{ $category->id }}" {{ (collect(old('categories'))->contains($category->id)) ? 'selected':'' }}>{{ $category->title }}</option>
                                         @endforeach
-                                        {{ old('category[0]') }}
                                     </select>
                                     <div class="clearFix"></div>
                                     @if( $errors->has('category'))

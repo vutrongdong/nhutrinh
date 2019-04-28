@@ -37,7 +37,11 @@ class ProductController extends Controller
     {
         if($request->categories && count($request->categories) > 0) {
             $data = $request->only('title', 'code', 'price', 'image', 'note', 'date');
-            $request->active = 'on' ? $data['active'] = 1 : $data['active'] = 0;
+            if($request->active == 'on') {
+                $data['active'] = 1;
+            } else {
+                $data['active'] = 0;
+            }
             $data['slug'] = str_slug($request->title); 
             $data['image_path'] = $request->image;
             $product = Product::create($data);
@@ -79,7 +83,11 @@ class ProductController extends Controller
         $product = Product::find($id);
         if($request->categories && count($request->categories) > 0) {
             $data = $request->only('title', 'code', 'price', 'image', 'note', 'date');
-            $request->active = 'on' ? $data['active'] = 1 : $data['active'] = 0;
+            if($request->active == 'on') {
+                $data['active'] = 1;
+            } else {
+                $data['active'] = 0;
+            }
             $data['slug'] = str_slug($request->title); 
             $data['image_path'] = $request->image;
             $product->fill($data)->save();
