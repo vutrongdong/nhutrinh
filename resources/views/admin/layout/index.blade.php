@@ -14,13 +14,17 @@
     <base href="{{asset('')}}" />
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Raleway'>
+<link rel='stylesheet' href='https://fonts.googleapis.com/icon?family=Material+Icons'>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
     <link href="css/app.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="admin_assets/plugins/bootstrap-datepicker/css/bootstrap-datepicker.min.css">
     <link rel="stylesheet" type="text/css" href="admin_assets/css/icons.css">
     <link rel="stylesheet" type="text/css" href="admin_assets/css/style.css">
+    <link rel="stylesheet" type="text/css" href="admin_assets/css/muilty_select.css">
     <link rel="stylesheet" type="text/css" href="admin_assets/plugins/sweet-alert2/sweetalert2.min.css">
     <script src="admin_assets/js/modernizr.min.js"></script>
+    <script src="js/muilty_select.js"></script>
 </head>
 <body class="fixed-left">
     <div id="wrapper">
@@ -127,7 +131,12 @@
     <script>
         var resizefunc = [];
     </script>
-    <script src="js/app.js" defer></script>
-    <script src="js/site.js" defer></script>
+    <script src="js/app.js"></script>
+    <script src="js/site.js"></script>
+    <script>
+        if(document.getElementById('selectWhenAdd')) {
+            document.multiselect('#selectWhenAdd');
+        }
+    </script>
 </body>
 </html>

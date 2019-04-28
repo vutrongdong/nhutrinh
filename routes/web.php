@@ -53,7 +53,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['adminLogin']], function(){
 		Route::post('add', 'ProductController@postAdd');
 
 		Route::get('edit/{id}', 'ProductController@getEdit');
-		Route::post('edit/{id}', 'ProductController@getEdit');
+		Route::post('edit/{id}', 'ProductController@postEdit');
 
 		Route::get('delete/{id}', 'ProductController@destroy');
 	});

@@ -30,8 +30,8 @@ class Product extends Authenticatable {
      */
     public $imgHeight = 200;
 
-    public function category()
+    public function categories()
     {
-        return $this->belongsTo('App\Category', 'category_id');
+        return $this->belongsToMany('App\Category', 'category_product', 'product_id', 'category_id');
     }
 }
