@@ -20,6 +20,8 @@
     <link rel="stylesheet" type="text/css" href="admin_assets/css/icons.css">
     <link rel="stylesheet" type="text/css" href="admin_assets/css/style.css">
     <link rel="stylesheet" type="text/css" href="admin_assets/plugins/sweet-alert2/sweetalert2.min.css">
+     <!-- jQuery -->
+    <script src="admin_assets/js/jquery/dist/jquery.min.js"></script>
     <script src="admin_assets/js/modernizr.min.js"></script>
 </head>
 <body class="fixed-left">
@@ -127,6 +129,8 @@
     <script>
         var resizefunc = [];
     </script>
+    @yield('script')
+
     <script src="js/app.js" defer></script>
     <script src="js/site.js" defer></script>
 </body>

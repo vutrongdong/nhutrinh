@@ -76,3 +76,5 @@ Route::group(['prefix' => 'admin', 'middleware' => ['adminLogin']], function(){
 		Route::post('/update', 'SettingController@update');
 	});
 });
+
+Route::post('/slide/upload', 'SlideController@uploadImage');
