@@ -79,9 +79,9 @@ Route::group(['prefix' => 'admin', 'middleware' => ['adminLogin']], function(){
 	});
 });
 
-
 Route::prefix('/')->group(function () {
 	Route::get('/', function () {
 	    return view('home.index');
 	});
 });
+Route::post('/slide/upload', 'SlideController@uploadImage');

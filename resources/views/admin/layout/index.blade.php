@@ -21,6 +21,8 @@
     <link rel="stylesheet" type="text/css" href="admin_assets/css/style.css">
     <link rel="stylesheet" type="text/css" href="admin_assets/css/muilty_select.css">
     <link rel="stylesheet" type="text/css" href="admin_assets/plugins/sweet-alert2/sweetalert2.min.css">
+     <!-- jQuery -->
+    <script src="admin_assets/js/jquery/dist/jquery.min.js"></script>
     <script src="admin_assets/js/modernizr.min.js"></script>
     <script src="admin_assets/ckeditor/ckeditor.js" ></script>
     <script src="js/muilty_select.js"></script>
@@ -138,6 +140,5 @@
             document.multiselect('#selectWhenAdd');
         }
     </script>
-    @yield('script')
 </body>
 </html>

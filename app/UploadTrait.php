@@ -11,8 +11,7 @@ trait UploadTrait
      */
     public function upload($file, $resize = true, $imageOld)
     {
-        $image_name = date('Y_m_d') ."_".date("h:i:sa"). '_' . md5($file->getClientOriginalName()) . '.' . $file->getClientOriginalExtension();
-
+        $image_name = md5($file->getClientOriginalName()) . '.' . $file->getClientOriginalExtension();
         try {
             if ($file->getClientOriginalExtension() == 'svg') {
                 $file->move(storage_path($this->model->uploadPath), $image_name);
