@@ -102,42 +102,16 @@
     <img src="home_assets/image/lala.png" alt="" width="100%" id="contentss-img-bg" style="margin-top: 10px;">
     <p class="danhmuc color-text text-center">BLOG</p>
     <div class="row" id="blog">
-        <div class="post col-sm-6 col-md-3 col-xl-3 mb-1 pb-1 blog-item">
-            <div style="margin: 0px auto; display: table;"><img src="home_assets/image/blog1.jpg" alt="" width="100%">
+        @foreach($blog_hot as $blog)
+            <div class="post col-sm-6 col-md-3 col-xl-3 mb-1 pb-1 blog-item">
+                <div style="margin: 0px auto; display: table;"><img src="upload/blog/{{$blog->image}}" alt="" width="100%">
+                </div>
+                <p class="title">{{ $blog->title }}</p>
+                <p class="summary">
+                    {{ $blog->teaser }}
+                </p>
             </div>
-            <p class="title">Giá Vàng, USD tiếp tục tăng mạnh</p>
-            <p class="summary">
-                Giá vàng miếng SJC tiếp tục tăng mạnh trong buổi chiều 12/8 , tiến sát mốc 34 triệu
-                đồng/ lượng , tỏng khi giá USD trên thị trường tự do cũng vượt mốc 22.000 đồng/USD
-            </p>
-        </div>
-        <div class="post col-sm-6 col-md-3 col-xl-3 mb-1 pb-1 blog-item">
-            <div style="margin: 0px auto; display: table;"><img src="home_assets/image/blog2.jpg" alt="" width="100%">
-            </div>
-            <p class="title">Giá Vàng, USD tiếp tục tăng mạnh</p>
-            <p class="summary">
-                Giá vàng miếng SJC tiếp tục tăng mạnh trong buổi chiều 12/8 , tiến sát mốc 34 triệu
-                đồng/ lượng , tỏng khi giá USD trên thị trường tự do cũng vượt mốc 22.000 đồng/USD
-            </p>
-        </div>
-        <div class="post col-sm-6 col-md-3 col-xl-3 mb-1 pb-1 blog-item">
-            <div style="margin: 0px auto; display: table;"><img src="home_assets/image/blog3.jpg" alt="" width="100%">
-            </div>
-            <p class="title">Giá Vàng, USD tiếp tục tăng mạnh</p>
-            <p class="summary">
-                Giá vàng miếng SJC tiếp tục tăng mạnh trong buổi chiều 12/8 , tiến sát mốc 34 triệu
-                đồng/ lượng , tỏng khi giá USD trên thị trường tự do cũng vượt mốc 22.000 đồng/USD
-            </p>
-        </div>
-        <div class="post col-sm-6 col-md-3 col-xl-3 mb-1 pb-1 blog-item">
-            <div style="margin: 0px auto; display: table;"><img src="home_assets/image/blog4.jpg" alt="" width="100%">
-            </div>
-            <p class="title">Giá Vàng, USD tiếp tục tăng mạnh</p>
-            <p class="summary">
-                Giá vàng miếng SJC tiếp tục tăng mạnh trong buổi chiều 12/8 , tiến sát mốc 34 triệu
-                đồng/ lượng , tỏng khi giá USD trên thị trường tự do cũng vượt mốc 22.000 đồng/USD
-            </p>
-        </div>
+        @endforeach
     </div>
     <div class="btn-more mt-3"><button type="button" class="btn">XEM THÊM</button></div>
 @endsection

@@ -34,16 +34,19 @@ class BlogController extends Controller
             $data['active'] = 0;
         }
         // image
-        $file = $request->file('image');
-        $duoi = $file->getClientOriginalExtension();
-        if($duoi!='jpg' && $duoi!='png' && $duoi!='jpeg')
+        if($request->hasFile('image'))
         {
-            return back()->with('errorCheck', 'Bạn chỉ được phép nhập ảnh có đuôi jpg, png, jpeg');
+            $file = $request->image;
+            $duoi = $file->getClientOriginalExtension();
+            if($duoi!='jpg' && $duoi!='png' && $duoi!='jpeg')
+            {
+                return back()->with('errorCheck', 'Bạn chỉ được phép nhập ảnh có đuôi jpg, png, jpeg');
+            }
+            $image = date('Y_m_d') ."_".date("h:i:sa"). '_' .$file->getClientOriginalName();
+            $file->move('upload/blog', $image);
+            imagejpeg($this->resize_image('upload/blog/'.$image, 800, 800), 'upload/blog/'.$image);
+            $data['image'] = $image;
         }
-        $image = date('Y_m_d') ."_".date("h:i:sa"). '_' .$file->getClientOriginalName();
-        $file->move('upload/blog', $image);
-        imagejpeg($this->resize_image('upload/blog/'.$image, 1200, 500), 'upload/blog/'.$image);
-        $data['image'] = $image;
         // end image
         $data['slug'] = str_slug($request->title); 
         $data['image_path'] = '';
@@ -72,7 +75,6 @@ class BlogController extends Controller
         // image
         if($request->hasFile('image'))
         {
-            dd($request->file('image'));
             $file = $request->file('image');
             $duoi = $file->getClientOriginalExtension();
             if($duoi!='jpg' && $duoi!='png' && $duoi!='jpeg')
@@ -80,11 +82,11 @@ class BlogController extends Controller
                 return back()->with('errorCheck', 'Bạn chỉ được phép nhập ảnh có đuôi jpg, png, jpeg');
             }
             $image = date('Y_m_d') ."_".date("h:i:sa"). '_' .$file->getClientOriginalName();
-            imagejpeg($this->resize_image('upload/blog/'.$image, 1200, 500), 'upload/blog/'.$image);
+            $file->move('upload/blog', $image);
+            imagejpeg($this->resize_image('upload/blog/'.$image, 900, 600), 'upload/blog/'.$image);
             if (file_exists('upload/blog/'.$blog->image)) {
                 unlink('upload/blog/'.$blog->image);
             }
-            $file->move('upload/blog', $image);
             $data['image'] = $image;
         }
         // end image
@@ -114,38 +116,26 @@ class BlogController extends Controller
         return redirect('admin/blog/list')->with('thongbao', 'Bạn đã xóa thành công');
     }
     
-    public function uploadImage(Request $request) {
-        try {
-            $this->validate($request, [
-                'files.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:5120',
-                'file' => 'image|mimes:jpeg,png,jpg,gif,svg|max:5120',
-            ], [
-                'files.*.image' => 'File upload không đúng định dạng',
-                'files.*.mimes' => 'File upload phải là 1 trong các định dạng: :values',
-                'files.*.max' => 'File upload không thể vượt quá :max KB',
-                'file.image' => 'File upload không đúng định dạng',
-                'file.mimes' => 'File upload phải là 1 trong các định dạng: :values',
-                'file.max' => 'File upload không thể vượt quá :max KB',
-            ]);
-            if ($request->file('file')) {
-                $image = $request->file('file');
-            } else {
-                $image = $request->file('files')[0];
-            }
-            if ($request->input('imageOld')) {
-                $imageOld = $request->input('imageOld');
-            } else {
-                $imageOld = null;
-            }
-            if ($request->input('resize')) {
-                return $this->model->upload($image, true, $imageOld);
-            }
-            return $this->model->upload($image, false, $imageOld);
-        } catch (\Illuminate\Validation\ValidationException $validationException) {
-            return response(['data' => [
-                'errors' => $validationException->validator->errors(),
-                'exception' => $validationException->getMessage(),
-            ]])->json($data, 422);
+    public function resize_image($file, $w, $h, $crop=FALSE) {
+        list($width, $height) = getimagesize($file);
+        switch(mime_content_type($file)) {
+            case 'image/png':
+              $src = imagecreatefrompng($file);
+              break;
+            case 'image/gif':
+              $src = imagecreatefromgif($file);
+              break;
+            case 'image/jpeg':
+              $src = imagecreatefromjpeg($file);
+              break;
+            case 'image/bmp':
+              $src = imagecreatefrombmp($file);
+              break;
+            default:
+              $src = null; 
         }
+        $dst = imagecreatetruecolor($w, $h);
+        imagecopyresampled($dst, $src, 0, 0, 0, 0, $w, $h, $width, $height);
+        return $dst;
     }
 }

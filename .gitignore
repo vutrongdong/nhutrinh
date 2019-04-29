@@ -3,6 +3,7 @@
 /public/storage
 /public/upload
 /.history
+/.phpintel
 /storage/*.key
 /vendor
 .env

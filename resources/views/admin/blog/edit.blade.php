@@ -15,7 +15,7 @@
             </div>
             <div class="card">
                 <div class="card-body">
-                    <form action="admin/blog/edit/{{ $blog->id }}" method="POST">
+                    <form action="admin/blog/edit/{{ $blog->id }}" method="POST" enctype="multipart/form-data">
                         <input type="hidden" name="_token" value="{{csrf_token()}}" />
                         <div class="row">
                             <div class="col-6">
@@ -46,9 +46,6 @@
                                             <div class="clearfix"></div>
                                         </label>
                                     </div>
-                                    <p>
-                                        <img src="upload/blog/{{$blog->image}}"/>
-                                    </p>
                                 </div>
                                 <div class="form-group">
                                     <label>Trạng thái</label>
@@ -70,6 +67,9 @@
                                 </div>
                             </div>
                         </div>
+                        <p>
+                            <img src="upload/blog/{{$blog->image}}" width="100%"/>
+                        </p>
                         <div class="form-group">
                             <label>Nội dung</label>
                             <textarea name="content" class="form-control ckeditor" rows="3">{{ $blog->content }}</textarea>
