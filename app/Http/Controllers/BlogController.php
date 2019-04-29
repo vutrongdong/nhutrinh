@@ -83,7 +83,7 @@ class BlogController extends Controller
             }
             $image = date('Y_m_d') ."_".date("h:i:sa"). '_' .$file->getClientOriginalName();
             $file->move('upload/blog', $image);
-            imagejpeg($this->resize_image('upload/blog/'.$image, 900, 700), 'upload/blog/'.$image);
+            imagejpeg($this->resize_image('upload/blog/'.$image, 900, 600), 'upload/blog/'.$image);
             if (file_exists('upload/blog/'.$blog->image)) {
                 unlink('upload/blog/'.$blog->image);
             }
