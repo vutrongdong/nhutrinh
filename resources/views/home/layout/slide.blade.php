@@ -2,11 +2,13 @@
     <div id="myCarousel" class="carousel slide mb-2" data-ride="carousel">
         <!-- Indicators -->
         <ol class="carousel-indicators">
-            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-            <li data-target="#myCarousel" data-slide-to="1"></li>
-            <li data-target="#myCarousel" data-slide-to="2"></li>
-            <li data-target="#myCarousel" data-slide-to="3"></li>
-            <li data-target="#myCarousel" data-slide-to="4"></li>
+            @foreach($slides_header as $slide)
+                @if($loop->iteration == 1)
+                    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                @else
+                    <li data-target="#myCarousel" data-slide-to="{{ $loop->index }}"></li>
+                @endif
+            @endforeach
         </ol>
         <!-- Wrapper for slides -->
         <div class="carousel-inner">
