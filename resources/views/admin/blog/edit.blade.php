@@ -42,13 +42,13 @@
                                     <label class="text-right" for="image" style="margin-top: 6px;">Ảnh (<span class="text-danger">*</span>)</label>
                                     <div class="upload">
                                         <label>
-                                            <input value="{{ $blog->image }}" id="image" type="file" name="image">
+                                            <input class="form-control" id="image" type="file" name="image">
                                             <div class="clearfix"></div>
                                         </label>
                                     </div>
-                                    @if( $errors->has('image'))
-                                        <p class="text-danger">{{ $errors->first('image') }}</p>
-                                    @endif
+                                    <p>
+                                        <img src="upload/blog/{{$blog->image}}"/>
+                                    </p>
                                 </div>
                                 <div class="form-group">
                                     <label>Trạng thái</label>
