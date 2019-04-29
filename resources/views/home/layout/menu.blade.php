@@ -9,60 +9,25 @@
 
     <div class="navbar-collapse collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mx-auto">
-            <li class="nav-item active dropdown">
-                <a class="nav-link" href="#" id="navbarDropdown">TRANG SỨC CƯỚI</a>
-                <div class="dropdown-content">
-                    <a class="dropdown-item" href="#">Bông tai đính đá</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Bông tai ngọc chai</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Nhẫn kim cương</a>
-                </div>
-            </li>
+            @foreach($categories_menu as $menu)
+                <li class="nav-item dropdown">
+                    <a class="nav-link text-uppercase" href="#">{{ $menu->title }}</a>
+                    <div class="dropdown-content">
+                        @foreach($menu->children as $children)
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item text-uppercase" href="#">{{ $children->title }}</a>
+                        @endforeach
+                    </div>
+                </li>
+            @endforeach
             <li class="nav-item dropdown">
-                <a class="nav-link" href="#">VÀNG 24K</a>
+                <a class="nav-link text-uppercase" href="#">{{ $categories_blog_menu->title }}</a>
                 <div class="dropdown-content">
-                    <a class="dropdown-item" href="#">Bông tai đính đá</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Bông tai ngọc chai</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Nhẫn kim cương</a>
+                    @foreach($categories_blog_menu->children as $children)
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item text-uppercase" href="#">{{ $children->title }}</a>
+                    @endforeach
                 </div>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link" href="#" id="navbarDropdown">
-                    VÀNG 18K
-                </a>
-                <div class="dropdown-content">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                </div>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link" href="#">BẠC CAO CẤP</a>
-                <div class="dropdown-content">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                </div>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link" href="#">CHARME PHONG THUỶ</a>
-                <div class="dropdown-content">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                </div>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link" href="#">BLOG</a>
             </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">
