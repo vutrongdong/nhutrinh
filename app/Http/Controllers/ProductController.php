@@ -108,7 +108,7 @@ class ProductController extends Controller
     {
         $product = Product::find($id);
         if($request->categories && count($request->categories) > 0) {
-            $data = $request->only('title', 'code', 'price', 'image', 'note', 'date');
+            $data = $request->only('title', 'code', 'price', 'note', 'date');
             if($request->active == 'on') {
                 $data['active'] = 1;
             } else {

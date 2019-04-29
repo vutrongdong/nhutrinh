@@ -27,14 +27,26 @@ class BlogController extends Controller
 
     public function postAdd(BlogAddRequest $request)
     {
-        $data = $request->only('title', 'content', 'image', 'teaser', 'category_id');
+        $data = $request->only('title', 'content', 'teaser', 'category_id');
         if($request->active == 'on') {
             $data['active'] = 1;
         } else {
             $data['active'] = 0;
         }
+        // image
+        $file = $request->file('image');
+        $duoi = $file->getClientOriginalExtension();
+        if($duoi!='jpg' && $duoi!='png' && $duoi!='jpeg')
+        {
+            return back()->with('errorCheck', 'Bạn chỉ được phép nhập ảnh có đuôi jpg, png, jpeg');
+        }
+        $image = date('Y_m_d') ."_".date("h:i:sa"). '_' .$file->getClientOriginalName();
+        $file->move('upload/blog', $image);
+        imagejpeg($this->resize_image('upload/blog/'.$image, 1200, 500), 'upload/blog/'.$image);
+        $data['image'] = $image;
+        // end image
         $data['slug'] = str_slug($request->title); 
-        $data['image_path'] = $request->image;
+        $data['image_path'] = '';
         $blog = Blog::create($data);
         return redirect('admin/blog/list')->with('thongbao', 'Bạn đã thêm bài viết thành công');
     }
@@ -50,14 +62,33 @@ class BlogController extends Controller
     public function postEdit(BlogUpdateRequest $request, $id)
     {
         $blog = Blog::find($id);
-        $data = $request->only('title', 'content', 'image', 'teaser', 'category_id');
+        $data = $request->only('title', 'content', 'teaser', 'category_id');
         if($request->active == 'on') {
             $data['active'] = 1;
         } else {
             $data['active'] = 0;
         }
         $data['slug'] = str_slug($request->title); 
-        $data['image_path'] = $request->image;
+        // image
+        if($request->hasFile('image'))
+        {
+            dd($request->file('image'));
+            $file = $request->file('image');
+            $duoi = $file->getClientOriginalExtension();
+            if($duoi!='jpg' && $duoi!='png' && $duoi!='jpeg')
+            {
+                return back()->with('errorCheck', 'Bạn chỉ được phép nhập ảnh có đuôi jpg, png, jpeg');
+            }
+            $image = date('Y_m_d') ."_".date("h:i:sa"). '_' .$file->getClientOriginalName();
+            imagejpeg($this->resize_image('upload/blog/'.$image, 1200, 500), 'upload/blog/'.$image);
+            if (file_exists('upload/blog/'.$blog->image)) {
+                unlink('upload/blog/'.$blog->image);
+            }
+            $file->move('upload/blog', $image);
+            $data['image'] = $image;
+        }
+        // end image
+        $data['image_path'] = '';
         $blog->fill($data)->save();
         return redirect('admin/blog/list')->with('thongbao', 'Bạn đã sửa bài viết thành công');
     }
@@ -76,6 +107,9 @@ class BlogController extends Controller
     public function destroy($id)
     {
         $blog = Blog::find($id);
+        if (file_exists('upload/blog/'.$blog->image)) {
+            unlink('upload/blog/'.$blog->image);
+        }
         $blog->delete();
         return redirect('admin/blog/list')->with('thongbao', 'Bạn đã xóa thành công');
     }
