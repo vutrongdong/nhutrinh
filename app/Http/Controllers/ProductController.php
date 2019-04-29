@@ -36,7 +36,7 @@ class ProductController extends Controller
     public function postAdd(ProductAddRequest $request)
     {
         if($request->categories && count($request->categories) > 0) {
-            $data = $request->only('title', 'code', 'price', 'image', 'note', 'date');
+            $data = $request->only('title', 'code', 'price', 'note', 'date');
             if($request->active == 'on') {
                 $data['active'] = 1;
             } else {
@@ -44,6 +44,18 @@ class ProductController extends Controller
             }
             $data['slug'] = str_slug($request->title); 
             $data['image_path'] = $request->image;
+            // image
+            $file = $request->file('image');
+            $duoi = $file->getClientOriginalExtension();
+            if($duoi!='jpg' && $duoi!='png' && $duoi!='jpeg')
+            {
+                return back()->with('errorCheck', 'Bạn chỉ được phép nhập ảnh có đuôi jpg, png, jpeg');
+            }
+            $image = date('Y_m_d') ."_".date("h:i:sa"). '_' .$file->getClientOriginalName();
+            $file->move('upload/product', $image);
+            imagejpeg($this->resize_image('upload/product/'.$image, 200, 200), 'upload/product/'.$image);
+            $data['image'] = $image;
+            // end image
             $product = Product::create($data);
             $product->categories()->sync($request->categories);
             return redirect('admin/product/list')->with('thongbao', 'Bạn đã thêm sản phẩm thành công');
@@ -55,6 +67,9 @@ class ProductController extends Controller
     public function destroy($id)
     {
         $product = Product::find($id);
+        if (file_exists('upload/product/'.$product->image)) {
+            unlink('upload/product/'.$product->image);
+        }
         $product->categories()->sync([]);
         $product->delete();
         return redirect('admin/product/list')->with('thongbao', 'Bạn đã xóa sản phẩm thành công');
@@ -100,12 +115,53 @@ class ProductController extends Controller
                 $data['active'] = 0;
             }
             $data['slug'] = str_slug($request->title); 
-            $data['image_path'] = $request->image;
+            $data['image_path'] = '';
+            // image
+            if($request->hasFile('image'))
+                {
+                $file = $request->file('image');
+                $duoi = $file->getClientOriginalExtension();
+                if($duoi!='jpg' && $duoi!='png' && $duoi!='jpeg')
+                {
+                    return back()->with('errorCheck', 'Bạn chỉ được phép nhập ảnh có đuôi jpg, png, jpeg');
+                }
+                $image = date('Y_m_d') ."_".date("h:i:sa"). '_' .$file->getClientOriginalName();
+                $file->move('upload/product', $image);
+                imagejpeg($this->resize_image('upload/product/'.$image, 200, 200), 'upload/product/'.$image);
+                if (file_exists('upload/product/'.$product->image)) {
+                    unlink('upload/product/'.$product->image);
+                }
+                $data['image'] = $image;
+            }
+            // end image
             $product->fill($data)->save();
             $product->categories()->sync($request->categories);
             return redirect('admin/product/list')->with('thongbao', 'Bạn đã sửa sản phẩm thành công');
         } else {
             return back()->with('errorCheck', 'Bạn chưa chọn danh mục cha cho sản phẩm');
         }
+    }
+
+    public function resize_image($file, $w, $h, $crop=FALSE) {
+        list($width, $height) = getimagesize($file);
+        switch(mime_content_type($file)) {
+            case 'image/png':
+              $src = imagecreatefrompng($file);
+              break;
+            case 'image/gif':
+              $src = imagecreatefromgif($file);
+              break;
+            case 'image/jpeg':
+              $src = imagecreatefromjpeg($file);
+              break;
+            case 'image/bmp':
+              $src = imagecreatefrombmp($file);
+              break;
+            default:
+              $src = null; 
+        }
+        $dst = imagecreatetruecolor($w, $h);
+        imagecopyresampled($dst, $src, 0, 0, 0, 0, $w, $h, $width, $height);
+        return $dst;
     }
 }

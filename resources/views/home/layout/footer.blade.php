@@ -13,12 +13,10 @@
         <!-- Grid row -->
         <div class="row mt-3 foo">
             <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
-
                 <!-- Content -->
-                <h6 class="text-uppercase font-weight-bold">VÀNG BẠC NHƯ TRỊNH</h6>
+                <h6 class="text-uppercase font-weight-bold">{{ $setting_footer->title }}</h6>
                 <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
-                <p>Trải qua hơn 10 năm phát triền và trưởng thành , Như Trịnh tự hào là chuyên gia số
-                    1 trong các mảng thị trường chuyên biệt mà </p>
+                <p>{{ $setting_footer->description }}</p>
 
             </div>
             <div class="col-md-2 col-lg-3 col-xl-3 mx-auto mb-4">

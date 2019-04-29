@@ -20,7 +20,7 @@
                     </div>
                 @endif
                 <div class="card-body">
-                    <form action="admin/product/edit/{{ $product->id }}" method="POST">
+                    <form action="admin/product/edit/{{ $product->id }}" method="POST" enctype="multipart/form-data">
                         <input type="hidden" name="_token" value="{{csrf_token()}}" />
                         <div class="row">
                             <div class="col-6">
@@ -61,13 +61,13 @@
                                     <label class="text-right" for="image" style="margin-top: 6px;">Ảnh (<span class="text-danger">*</span>)</label>
                                     <div class="upload">
                                         <label>
-                                            <input value="{{ old('image') }}" class="form-control" id="image" type="file" name="image">
+                                            <input class="form-control" id="image" type="file" name="image">
                                             <div class="clearfix"></div>
                                         </label>
                                     </div>
-                                    @if( $errors->has('image'))
-                                        <p class="text-danger">{{ $errors->first('image') }}</p>
-                                    @endif
+                                    <p>
+                                        <img src="upload/product/{{$product->image}}"/>
+                                    </p>
                                 </div>
                             </div>
                             <div class="col-6">

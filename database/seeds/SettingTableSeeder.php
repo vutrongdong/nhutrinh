@@ -14,8 +14,8 @@ class SettingTableSeeder extends Seeder
     {
         DB::table('settings')->insert([
             [
-                'title' => 'Website trang sức sô 1 tại Việt Nam',
-                'description'=> 'Đây là đoạn mô tả về công ty, doanh nghiệp',
+                'title' => 'VÀNG BẠC NHƯ TRỊNH',
+                'description'=> 'Trải qua hơn 10 năm phát triền và trưởng thành , Như Trịnh tự hào là chuyên gia số 1 trong các mảng thị trường chuyên biệt.',
                 'name' => 'Website trang sức',
                 'address' => '11C/14 Dương Quảng Hàm - Cầu Giấy - Hà Nội',
                 'phone' => '01688888888',
