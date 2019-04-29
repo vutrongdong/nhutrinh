@@ -36,7 +36,7 @@ class SlideController extends Controller
                 return redirect('admin/slide/add')->with('loi', 'Bạn chỉ được phép nhập ảnh có đuôi jpg, png, jpeg');
             }
             $name = $file->getClientOriginalName();
-            $image = str_random(5)."_".$name;
+            $image = str_random(3)."_".$name;
             while(file_exists('upload/slide/'.$image))
             {
                 $image = $name;
@@ -76,7 +76,7 @@ class SlideController extends Controller
                 return redirect('admin/slide/edit/'.$id)->with('loi', 'Bạn chỉ được phép nhập ảnh có đuôi jpg, png, jpeg');
             }
             $name = $file->getClientOriginalName();
-            $image = str_random(5)."_".$name;
+            $image = str_random(3)."_".$name;
             while(file_exists('upload/slide/'.$image))
             {
                 $image = $name;
@@ -94,7 +94,7 @@ class SlideController extends Controller
     public function getXoa($id){
         $slide = Slide::find($id);
         $slide->delete();
-        return redirect('admin/slide/list')->with('thongbao', 'Bạn đã xóa Slide thành công');
+        return redirect('admin/slide/list')->with('thongbao', 'Bạn đã xóa tập tin');
     }
 
     public function uploadImage(Request $request) {
