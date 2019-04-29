@@ -89,7 +89,7 @@ class SlideController extends Controller
         	// return redirect('admin/slide/edit/'.$id)->with('loi', 'Bạn chưa chọn ảnh cần thay đổi');
         }
         $slide->save();
-	    return redirect('admin/slide/list')->with('thongbao', 'Bạn đã sửa slide thành công');
+	    return redirect('admin/slide/list)->with('thongbao', 'Bạn đã sửa slide thành công');
     }
     public function getXoa($id){
         $slide = Slide::find($id);

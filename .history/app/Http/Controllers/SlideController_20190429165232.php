@@ -85,11 +85,9 @@ class SlideController extends Controller
             imagejpeg($this->resize_image('upload/slide/'.$image, 1200, 500), 'upload/slide/'.$image);
             unlink('upload/slide/'.$slide->image);
             $slide->image = $image;
-        } else {
-        	// return redirect('admin/slide/edit/'.$id)->with('loi', 'Bạn chưa chọn ảnh cần thay đổi');
-        }
-        $slide->save();
-	    return redirect('admin/slide/list')->with('thongbao', 'Bạn đã sửa slide thành công');
+	        $slide->save();
+	        return redirect('admin/slide/edit/'.$id)->with('thongbao', 'Bạn đã sửa slide thành công');
+        } else {}
     }
     public function getXoa($id){
         $slide = Slide::find($id);
