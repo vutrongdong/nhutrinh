@@ -4,18 +4,18 @@
         <div class="col-12 container">
             <div style="margin-left: 15px;">
                 <h4 class="page-title">
-                    Sửa slide
+                    Tạo mới slide
                 </h4>
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="admin/">Bảng điều khiển</a></li>
                     <li class="breadcrumb-item"><a href="admin/slide/list">Slide</a></li>
-                    <li class="breadcrumb-item active">Sửa slide</li>
+                    <li class="breadcrumb-item active">Tạo mới slide</li>
                 </ol>
                 <p class="clearfix"></p>
             </div>
             <div class="card">
                 <div class="card-body">
-                    @if(session('thongbao'))
+                @if(session('thongbao'))
                             <div class='alert alert-success'>
                                 {{session('thongbao')}}
                             </div>                          
@@ -24,13 +24,13 @@
                             <div class='alert alert-danger'>
                                 {{session('loi')}}
                             </div>
-                    @endif
-                    <form action="admin/slide/edit" method="POST">
+                        @endif
+                    <form action="admin/slide/add" method="POST" enctype="multipart/form-data">
                         <input type="hidden" name="_token" value="{{csrf_token()}}" />
                         <div class="row">
                             <div class="form-group col-md-6 col-xs-12">
                                 <label>Tiêu đề</label>
-                                <input class="form-control" name="title" placeholder="Điền tiêu đề slide" value="{{$slide->title}}" />
+                                <input value="{{ old('title') }}" class="form-control" name="title" placeholder="Điền tên danh mục" />
                                 <div class="clearFix"></div>
                                 @if( $errors->has('title'))
                                      <p style="color: red;">{{ $errors->first('title') }}</p>
@@ -38,17 +38,43 @@
                             </div>
                             <div class="form-group col-md-6 col-xs-12">
                                 <label>Hình ảnh</label>
-                                    <input onchange="handerSelectImage($event)" class="form-control" type="file" name="image" />
+                                    <input id="displayImages" class="form-control" type="file" name="image" />
                                 </div>
                             </div>
-                            <p>
-                                <img src="upload/slide/{{$slide->image}}" width="100%" />
-                            </p>
-                            <button type="submit" class="btn btn-success">Lưu lại</button>
+                            <button type="submit" class="btn btn-success">Thêm</button>
+                            <button type="reset" class="btn btn-info">Làm mới</button>
                         </div>
                     <form>
                 </div>
             </div>
         </div>
     </div>
+@endsection
+@section('script')
+<script>
+    // $(document).ready(function(){
+    //     $("#displayImages").change(function(e){
+    //         let formData = new FormData();
+    //         formData.append('resize', '1');
+    //         formData.append('imageOld', e.target.files[0].name);
+    //         formData.append('file', e.target.files[0]);
+    //         console.log(formData);
+    //         $.ajax({
+    //             type: 'POST',
+    //             url:"/slide/upload",
+    //             data: formData,
+    //             processData: false, 
+    //             contentType: false, 
+    //             headers:
+    //             {
+    //                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    //             },
+    //             success: function(returnval) {
+    //                 console.log(returnval.data.path);
+    //                 $(".displayImages").attr("src", returnval.data.path);
+    //             }
+    //         });
+    //     });
+    // });
+</script>
 @endsection

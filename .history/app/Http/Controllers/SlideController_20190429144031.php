@@ -87,7 +87,6 @@ class SlideController extends Controller
 	        $slide->save();
 	        return redirect('admin/slide/edit/'.$id)->with('thongbao', 'Bạn đã sửa slide thành công');
         } else {
-            dd(1);
         	return redirect('admin/slide/edit/'.$id)->with('loi', 'Bạn chưa chọn ảnh cần thay đổi');
         }
     }

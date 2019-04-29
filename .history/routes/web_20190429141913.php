@@ -40,7 +40,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['adminLogin']], function(){
 		Route::post('add', 'SlideController@postAdd');
 
 		Route::get('edit/{id}', 'SlideController@getSua');
-		Route::post('edit/{id}', 'SlideController@postSua');
+		Route::post('edit/{id}', 'SlideController@getEdit');
 
 		Route::get('delete/{id}', 'SlideController@destroy');
 	});

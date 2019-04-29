@@ -15,16 +15,6 @@
             </div>
             <div class="card">
                 <div class="card-body">
-                    @if(session('thongbao'))
-                        <div class='alert alert-success'>
-                            {{session('thongbao')}}
-                        </div>                          
-                    @endif
-                    @if(session('loi'))
-                        <div class='alert alert-danger'>
-                            {{session('loi')}}
-                        </div>
-                    @endif
                     <form action="admin/slide/add" method="POST" enctype="multipart/form-data">
                         <input type="hidden" name="_token" value="{{csrf_token()}}" />
                         <div class="row">

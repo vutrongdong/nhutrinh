@@ -25,7 +25,7 @@
                             {{session('loi')}}
                         </div>
                     @endif
-                    <form action="admin/slide/add" method="POST" enctype="multipart/form-data">
+                    <form action="admin/slide/add" method="POST">
                         <input type="hidden" name="_token" value="{{csrf_token()}}" />
                         <div class="row">
                             <div class="form-group col-md-6 col-xs-12">
@@ -41,6 +41,7 @@
                                     <input id="displayImages" class="form-control" type="file" name="image" />
                                 </div>
                             </div>
+                            <img class="displayImages" src="" alt="" srcset="">
                             <button type="submit" class="btn btn-success">Thêm</button>
                             <button type="reset" class="btn btn-info">Làm mới</button>
                         </div>
@@ -52,29 +53,29 @@
 @endsection
 @section('script')
 <script>
-    // $(document).ready(function(){
-    //     $("#displayImages").change(function(e){
-    //         let formData = new FormData();
-    //         formData.append('resize', '1');
-    //         formData.append('imageOld', e.target.files[0].name);
-    //         formData.append('file', e.target.files[0]);
-    //         console.log(formData);
-    //         $.ajax({
-    //             type: 'POST',
-    //             url:"/slide/upload",
-    //             data: formData,
-    //             processData: false, 
-    //             contentType: false, 
-    //             headers:
-    //             {
-    //                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-    //             },
-    //             success: function(returnval) {
-    //                 console.log(returnval.data.path);
-    //                 $(".displayImages").attr("src", returnval.data.path);
-    //             }
-    //         });
-    //     });
-    // });
+    $(document).ready(function(){
+        $("#displayImages").change(function(e){
+            let formData = new FormData();
+            formData.append('resize', '1');
+            formData.append('imageOld', e.target.files[0].name);
+            formData.append('file', e.target.files[0]);
+            console.log(formData);
+            $.ajax({
+                type: 'POST',
+                url:"/slide/upload",
+                data: formData,
+                processData: false, 
+                contentType: false, 
+                headers:
+                {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                success: function(returnval) {
+                    console.log(returnval.data.path);
+                    $(".displayImages").attr("src", returnval.data.path);
+                }
+            });
+        });
+    });
 </script>
 @endsection

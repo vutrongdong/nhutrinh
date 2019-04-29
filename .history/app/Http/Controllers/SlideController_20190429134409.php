@@ -31,18 +31,20 @@ class SlideController extends Controller
         {
             $file = $request->file('image');
             $duoi = $file->getClientOriginalExtension();
+
             if($duoi!='jpg' && $duoi!='png' && $duoi!='jpeg')
             {
                 return redirect('admin/slide/add')->with('loi', 'Bạn chỉ được phép nhập ảnh có đuôi jpg, png, jpeg');
             }
             $name = $file->getClientOriginalName();
             $image = str_random(3)."_".$name;
+                //Kiểm tra tồn tại tên file
             while(file_exists('upload/slide/'.$image))
             {
                 $image = $name;
             }
+            // dd($file);
             $file->move('upload/slide', $image);
-            imagejpeg($this->resize_image('upload/slide/'.$image, 1200, 500), 'upload/slide/'.$image);
             $slide->image = $image;
         } else {
             $slide->image = "";
@@ -54,41 +56,48 @@ class SlideController extends Controller
     }
     public function getSua($id){
         $slide = Slide::find($id);
-        return view('admin.slide.edit', ['slide'=>$slide]);
+        return view('admin.slide.sua', ['slide'=>$slide]);
     }
     public function postSua(Request $request, $id){
         $this->validate($request, 
             [
-                'title' => 'required',
+                'Ten' => 'required',
+                'NoiDung'=>'required',
             ],
             [
-                'title.required' => 'Bạn chưa nhập tên',
-        ]);
+            	'Ten.required' => 'Bạn chưa nhập tên',
+            	'NoiDung.required' => 'Bạn chưa nhập nội dung'
+            ]);
         $slide = Slide::find($id);
-        $slide->title = $request->title;
-        $slide->slug = str_slug($request->title);
-        if($request->hasFile('image'))
+        $slide->Ten = $request->Ten;
+        $slide->NoiDung = $request->NoiDung;
+        if($request->has('link'))
         {
-            $file = $request->file('image');
+        	$slide->link = $request->link;
+        }
+        if($request->hasFile('Hinh'))
+        {
+            $file = $request->file('Hinh');
             $duoi = $file->getClientOriginalExtension();
+
             if($duoi!='jpg' && $duoi!='png' && $duoi!='jpeg')
             {
-                return redirect('admin/slide/edit/'.$id)->with('loi', 'Bạn chỉ được phép nhập ảnh có đuôi jpg, png, jpeg');
+                // return redirect('admin/slide/sua/'.$id)->with('loi', 'Bạn chỉ được phép nhập ảnh có đuôi jpg, png, jpeg');
             }
             $name = $file->getClientOriginalName();
-            $image = str_random(3)."_".$name;
-            while(file_exists('upload/slide/'.$image))
+            $Hinh = str_random(5)."_".$name;
+                //Kiểm tra tồn tại tên file
+            while(file_exists('upload/slide/'.$Hinh))
             {
-                $image = $name;
+                $Hinh = str_random(5)."_".$name;
             }
-            $file->move('upload/slide', $image);
-            unlink('upload/slide/'.$slide->image);
-            $slide->image = $image;
+            $file->move('upload/slide', $Hinh);
+            unlink('upload/slide/'.$slide->Hinh);
+            $slide->Hinh = $Hinh;
 	        $slide->save();
-	        return redirect('admin/slide/edit/'.$id)->with('thongbao', 'Bạn đã sửa slide thành công');
+	        return redirect('admin/slide/sua/'.$id)->with('thongbao', 'Bạn đã sửa slide thành công');
         } else {
-            dd(1);
-        	return redirect('admin/slide/edit/'.$id)->with('loi', 'Bạn chưa chọn ảnh cần thay đổi');
+        	return redirect('admin/slide/sua/'.$id)->with('loi', 'Bạn chỉ được phép nhập ảnh có đuôi jpg, png, jpeg');
         }
     }
     public function getXoa($id){
@@ -115,11 +124,40 @@ class SlideController extends Controller
         return $slide->upload($image, false, $imageOld);
     }
 
-    public function resize_image($file, $w, $h, $crop=FALSE) {
-        list($width, $height) = getimagesize($file);
-        $src = imagecreatefromjpeg($file);
-        $dst = imagecreatetruecolor($w, $h);
-        imagecopyresampled($dst, $src, 0, 0, 0, 0, $w, $h, $width, $height);
-        return $dst;
+    public function resize($newWidth, $originalFile) {
+
+        $info = getimagesize($originalFile);
+        $mime = $info['mime'];
+    
+        switch ($mime) {
+                case 'image/jpeg':
+                        $image_create_func = 'imagecreatefromjpeg';
+                        $image_save_func = 'imagejpeg';
+                        $new_image_ext = 'jpg';
+                        break;
+    
+                case 'image/png':
+                        $image_create_func = 'imagecreatefrompng';
+                        $image_save_func = 'imagepng';
+                        $new_image_ext = 'png';
+                        break;
+    
+                case 'image/gif':
+                        $image_create_func = 'imagecreatefromgif';
+                        $image_save_func = 'imagegif';
+                        $new_image_ext = 'gif';
+                        break;
+    
+                default: 
+                        throw new Exception('Unknown image type.');
+        }
+    
+        $img = $image_create_func($originalFile);
+        list($width, $height) = getimagesize($originalFile);
+    
+        $newHeight = ($height / $width) * $newWidth;
+        $tmp = imagecreatetruecolor($newWidth, $newHeight);
+        imagecopyresampled($tmp, $img, 0, 0, 0, 0, $newWidth, $newHeight, $width, $height);
+        $image_save_func($tmp, "1");
     }
 }

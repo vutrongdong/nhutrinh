@@ -30,7 +30,7 @@
                         <div class="row">
                             <div class="form-group col-md-6 col-xs-12">
                                 <label>Tiêu đề</label>
-                                <input class="form-control" name="title" placeholder="Điền tiêu đề slide" value="{{$slide->title}}" />
+                                <input value="{{ old('title') }}" class="form-control" name="title" placeholder="Điền tiêu đề slide" value="{{$slide->title}}" />
                                 <div class="clearFix"></div>
                                 @if( $errors->has('title'))
                                      <p style="color: red;">{{ $errors->first('title') }}</p>

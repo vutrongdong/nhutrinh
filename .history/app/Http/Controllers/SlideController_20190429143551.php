@@ -71,6 +71,7 @@ class SlideController extends Controller
         {
             $file = $request->file('image');
             $duoi = $file->getClientOriginalExtension();
+
             if($duoi!='jpg' && $duoi!='png' && $duoi!='jpeg')
             {
                 return redirect('admin/slide/edit/'.$id)->with('loi', 'Bạn chỉ được phép nhập ảnh có đuôi jpg, png, jpeg');
@@ -83,12 +84,11 @@ class SlideController extends Controller
             }
             $file->move('upload/slide', $image);
             unlink('upload/slide/'.$slide->image);
-            $slide->image = $image;
+            $slide->Hinh = $Hinh;
 	        $slide->save();
-	        return redirect('admin/slide/edit/'.$id)->with('thongbao', 'Bạn đã sửa slide thành công');
+	        return redirect('admin/slide/sua/'.$id)->with('thongbao', 'Bạn đã sửa slide thành công');
         } else {
-            dd(1);
-        	return redirect('admin/slide/edit/'.$id)->with('loi', 'Bạn chưa chọn ảnh cần thay đổi');
+        	return redirect('admin/slide/sua/'.$id)->with('loi', 'Bạn chỉ được phép nhập ảnh có đuôi jpg, png, jpeg');
         }
     }
     public function getXoa($id){

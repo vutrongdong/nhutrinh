@@ -85,10 +85,9 @@ class SlideController extends Controller
             unlink('upload/slide/'.$slide->image);
             $slide->image = $image;
 	        $slide->save();
-	        return redirect('admin/slide/edit/'.$id)->with('thongbao', 'Bạn đã sửa slide thành công');
+	        return redirect('admin/slide/sua/'.$id)->with('thongbao', 'Bạn đã sửa slide thành công');
         } else {
-            dd(1);
-        	return redirect('admin/slide/edit/'.$id)->with('loi', 'Bạn chưa chọn ảnh cần thay đổi');
+        	return redirect('admin/slide/sua/'.$id)->with('loi', 'Bạn chưa chọn ảnh cần thay đổi');
         }
     }
     public function getXoa($id){

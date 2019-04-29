@@ -63,32 +63,37 @@ class SlideController extends Controller
             ],
             [
                 'title.required' => 'Bạn chưa nhập tên',
-        ]);
+            ]);
         $slide = Slide::find($id);
-        $slide->title = $request->title;
-        $slide->slug = str_slug($request->title);
-        if($request->hasFile('image'))
+        $slide->Ten = $request->Ten;
+        $slide->NoiDung = $request->NoiDung;
+        if($request->has('link'))
         {
-            $file = $request->file('image');
+        	$slide->link = $request->link;
+        }
+        if($request->hasFile('Hinh'))
+        {
+            $file = $request->file('Hinh');
             $duoi = $file->getClientOriginalExtension();
+
             if($duoi!='jpg' && $duoi!='png' && $duoi!='jpeg')
             {
-                return redirect('admin/slide/edit/'.$id)->with('loi', 'Bạn chỉ được phép nhập ảnh có đuôi jpg, png, jpeg');
+                // return redirect('admin/slide/sua/'.$id)->with('loi', 'Bạn chỉ được phép nhập ảnh có đuôi jpg, png, jpeg');
             }
             $name = $file->getClientOriginalName();
-            $image = str_random(3)."_".$name;
-            while(file_exists('upload/slide/'.$image))
+            $Hinh = str_random(5)."_".$name;
+                //Kiểm tra tồn tại tên file
+            while(file_exists('upload/slide/'.$Hinh))
             {
-                $image = $name;
+                $Hinh = str_random(5)."_".$name;
             }
-            $file->move('upload/slide', $image);
-            unlink('upload/slide/'.$slide->image);
-            $slide->image = $image;
+            $file->move('upload/slide', $Hinh);
+            unlink('upload/slide/'.$slide->Hinh);
+            $slide->Hinh = $Hinh;
 	        $slide->save();
-	        return redirect('admin/slide/edit/'.$id)->with('thongbao', 'Bạn đã sửa slide thành công');
+	        return redirect('admin/slide/sua/'.$id)->with('thongbao', 'Bạn đã sửa slide thành công');
         } else {
-            dd(1);
-        	return redirect('admin/slide/edit/'.$id)->with('loi', 'Bạn chưa chọn ảnh cần thay đổi');
+        	return redirect('admin/slide/sua/'.$id)->with('loi', 'Bạn chỉ được phép nhập ảnh có đuôi jpg, png, jpeg');
         }
     }
     public function getXoa($id){

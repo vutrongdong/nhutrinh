@@ -15,7 +15,7 @@
             </div>
             <div class="card">
                 <div class="card-body">
-                    @if(session('thongbao'))
+                @if(session('thongbao'))
                             <div class='alert alert-success'>
                                 {{session('thongbao')}}
                             </div>                          
@@ -24,13 +24,13 @@
                             <div class='alert alert-danger'>
                                 {{session('loi')}}
                             </div>
-                    @endif
+                        @endif
                     <form action="admin/slide/edit" method="POST">
                         <input type="hidden" name="_token" value="{{csrf_token()}}" />
                         <div class="row">
                             <div class="form-group col-md-6 col-xs-12">
                                 <label>Tiêu đề</label>
-                                <input class="form-control" name="title" placeholder="Điền tiêu đề slide" value="{{$slide->title}}" />
+                                <input value="{{ old('title') }}" class="form-control" name="title" placeholder="Điền tiêu đề slide" value="{{$slide->title}}" />
                                 <div class="clearFix"></div>
                                 @if( $errors->has('title'))
                                      <p style="color: red;">{{ $errors->first('title') }}</p>
