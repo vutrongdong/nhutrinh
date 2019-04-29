@@ -17,7 +17,6 @@ class ProductUpdateRequest extends FormRequest
             'title' => "required|unique:products,title,".$this->id,
             'code' => "required|unique:products,code,".$this->id,
             'price' => "required|numeric",
-            'image' => "required"
         ];
     }
 
@@ -30,7 +29,6 @@ class ProductUpdateRequest extends FormRequest
             'title.required' => "Tiêu đề không được trống",
             'code.unique' => "Mã sản phẩm không được trùng",
             'code.required' => "Mã sản phẩm không được trống",
-            'image.required' => "Ảnh không được trống",
         ];
     }
 
