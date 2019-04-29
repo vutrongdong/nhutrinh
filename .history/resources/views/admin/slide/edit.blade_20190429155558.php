@@ -25,7 +25,7 @@
                                 {{session('loi')}}
                             </div>
                     @endif
-                    <form action="admin/slide/edit/{{$slide->id}}" method="POST" enctype="multipart/form-data">
+                    <form action="admin/slide/edit/{{$slide->title}}" method="POST" enctype="multipart/form-data">
                         <input type="hidden" name="_token" value="{{csrf_token()}}" />
                         <div class="row">
                             <div class="form-group col-md-6 col-xs-12">

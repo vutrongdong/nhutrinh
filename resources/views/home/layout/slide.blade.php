@@ -10,21 +10,17 @@
         </ol>
         <!-- Wrapper for slides -->
         <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img src="home_assets/image/la.jpg" alt="Los Angeles" class="d-block w-100">
-            </div>
-            <div class="carousel-item">
-                <img src="home_assets/image/la1.jpg" alt="Chicago" class="d-block w-100">
-            </div>
-            <div class="carousel-item">
-                <img src="home_assets/image/la.jpg" alt="New york" class="d-block w-100">
-            </div>
-            <div class="carousel-item">
-                <img src="home_assets/image/la1.jpg" alt="New york" class="d-block w-100">
-            </div>
-            <div class="carousel-item">
-                <img src="home_assets/image/la.jpg" alt="New york" class="d-block w-100">
-            </div>
+            @foreach($slides_header as $slide)
+                @if($loop->iteration == 1)
+                    <div class="carousel-item active">
+                        <img src="upload/slide/{{$slide->image}}" alt="Los Angeles" class="d-block w-100">
+                    </div>
+                @else
+                    <div class="carousel-item">
+                        <img src="upload/slide/{{$slide->image}}" alt="Los Angeles" class="d-block w-100">
+                    </div>
+                @endif
+            @endforeach
         </div>
         <!-- Left and right controls -->
         <a class="left carousel-control" href="#myCarousel" data-slide="prev">

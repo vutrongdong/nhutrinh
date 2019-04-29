@@ -20,7 +20,7 @@
                     </div>
                 @endif
                 <div class="card-body">
-                    <form action="admin/product/add" method="POST">
+                    <form action="admin/product/add" method="POST" enctype="multipart/form-data">
                         <input type="hidden" name="_token" value="{{csrf_token()}}" />
                         <div class="row">
                             <div class="col-6">

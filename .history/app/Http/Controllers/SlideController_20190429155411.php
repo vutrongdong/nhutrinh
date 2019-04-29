@@ -45,7 +45,7 @@ class SlideController extends Controller
             imagejpeg($this->resize_image('upload/slide/'.$image, 1200, 500), 'upload/slide/'.$image);
             $slide->image = $image;
         } else {
-            return redirect('admin/slide/add')->with('loi', 'Bạn chưa chọn ảnh slide');
+            $slide->image = "";
         }
         $slide->slug = str_slug($request->title);
         $slide->image_path = '';
@@ -82,12 +82,12 @@ class SlideController extends Controller
                 $image = $name;
             }
             $file->move('upload/slide', $image);
-            imagejpeg($this->resize_image('upload/slide/'.$image, 1200, 500), 'upload/slide/'.$image);
             unlink('upload/slide/'.$slide->image);
             $slide->image = $image;
 	        $slide->save();
 	        return redirect('admin/slide/edit/'.$id)->with('thongbao', 'Bạn đã sửa slide thành công');
         } else {
+            dd(1);
         	return redirect('admin/slide/edit/'.$id)->with('loi', 'Bạn chưa chọn ảnh cần thay đổi');
         }
     }
@@ -117,22 +117,7 @@ class SlideController extends Controller
 
     public function resize_image($file, $w, $h, $crop=FALSE) {
         list($width, $height) = getimagesize($file);
-        switch(mime_content_type($file)) {
-            case 'image/png':
-              $src = imagecreatefrompng($file);
-              break;
-            case 'image/gif':
-              $src = imagecreatefromgif($file);
-              break;
-            case 'image/jpeg':
-              $src = imagecreatefromjpeg($file);
-              break;
-            case 'image/bmp':
-              $src = imagecreatefrombmp($file);
-              break;
-            default:
-              $src = null; 
-        }
+        $src = imagecreatefromjpeg($file);
         $dst = imagecreatetruecolor($w, $h);
         imagecopyresampled($dst, $src, 0, 0, 0, 0, $w, $h, $width, $height);
         return $dst;

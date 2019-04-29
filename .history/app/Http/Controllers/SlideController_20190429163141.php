@@ -117,22 +117,23 @@ class SlideController extends Controller
 
     public function resize_image($file, $w, $h, $crop=FALSE) {
         list($width, $height) = getimagesize($file);
+        $src = imagecreatefromjpeg($file);
         switch(mime_content_type($file)) {
             case 'image/png':
-              $src = imagecreatefrompng($file);
+              $img = imagecreatefrompng($file);
               break;
             case 'image/gif':
-              $src = imagecreatefromgif($file);
+              $img = imagecreatefromgif($file);
               break;
             case 'image/jpeg':
-              $src = imagecreatefromjpeg($file);
+              $img = imagecreatefromjpeg($file);
               break;
             case 'image/bmp':
-              $src = imagecreatefrombmp($file);
+              $img = imagecreatefrombmp($file);
               break;
             default:
-              $src = null; 
-        }
+              $img = null; 
+            }
         $dst = imagecreatetruecolor($w, $h);
         imagecopyresampled($dst, $src, 0, 0, 0, 0, $w, $h, $width, $height);
         return $dst;
