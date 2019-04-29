@@ -81,5 +81,6 @@ Route::group(['prefix' => 'admin', 'middleware' => ['adminLogin']], function(){
 
 Route::prefix('/')->group(function () {
 	Route::get('/', 'HomeController@index');
+	Route::get('/{slug}', 'HomeController@detailBlog');
 });
 Route::post('/slide/upload', 'SlideController@uploadImage');
