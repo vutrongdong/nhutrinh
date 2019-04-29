@@ -23,7 +23,6 @@ class ProductTableSeeder extends Seeder
                 'date' => 5,
                 'note' => 'Ghi chú 1',
                 'active' => 1,
-                'category_id' => 5,
                 'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
             ],
@@ -37,7 +36,6 @@ class ProductTableSeeder extends Seeder
                 'date' => 6,
                 'note' => 'Ghi chú 2',
                 'active' => 1,
-                'category_id' => 5,
                 'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
             ],
@@ -51,7 +49,6 @@ class ProductTableSeeder extends Seeder
                 'date' => 7,
                 'note' => 'Ghi chú 3',
                 'active' => 1,
-                'category_id' => 5,
                 'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
             ],
@@ -65,7 +62,6 @@ class ProductTableSeeder extends Seeder
                 'date' => 8,
                 'note' => 'Ghi chú 4',
                 'active' => 1,
-                'category_id' => 5,
                 'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
             ],
@@ -79,7 +75,6 @@ class ProductTableSeeder extends Seeder
                 'date' => 9,
                 'note' => 'Ghi chú 5',
                 'active' => 1,
-                'category_id' => 6,
                 'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
             ],
@@ -93,7 +88,6 @@ class ProductTableSeeder extends Seeder
                 'date' => 6,
                 'note' => 'Ghi chú 6',
                 'active' => 1,
-                'category_id' => 5,
                 'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
             ],
@@ -107,7 +101,6 @@ class ProductTableSeeder extends Seeder
                 'date' => 8,
                 'note' => 'Ghi chú 7',
                 'active' => 1,
-                'category_id' => 5,
                 'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
             ],
@@ -121,7 +114,6 @@ class ProductTableSeeder extends Seeder
                 'date' => 9,
                 'note' => 'Ghi chú 8',
                 'active' => 1,
-                'category_id' => 5,
                 'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
             ],

@@ -14,21 +14,23 @@ class ProductAddRequest extends FormRequest
     public function rules()
     {
         return [
-            'slug' => "required|unique:products,slug,".$this->id,
-            'title' => "required|unique:products,title,".$this->id,
+            'title' => "required|unique:products,title",
             'code' => "required|unique:products,code,".$this->id,
+            'price' => "required|numeric",
+            'image' => "required"
         ];
     }
 
     public function messages()
     {
         return [
-            'slug.required' => "Tên không dấu không được trống",
-            'slug.unique' => "Tên không dấu không được trùng",
+            'price.numeric' => "Giá bán phải là số.",
+            'price.required' => "Giá bán không được để trống.",
             'title.unique' => "Tiêu đề không được trùng",
             'title.required' => "Tiêu đề không được trống",
             'code.unique' => "Mã sản phẩm không được trùng",
             'code.required' => "Mã sản phẩm không được trống",
+            'image.required' => "Ảnh không được trống",
         ];
     }
 

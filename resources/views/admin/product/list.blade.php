@@ -51,19 +51,11 @@
                                             <td>{{$product->code}}</td>
                                             <td>{{number_format($product->price, 0, ',', '.').' VNĐ'}}</td>
                                             <td>
-                                                @if($product->active)
-                                                    <div class="checkbox checkbox-success">
-                                                        <input id="active" type="checkbox" checked>
-                                                        <label for="active">
-                                                        </label>
-                                                    </div>
-                                                @else
-                                                    <div class="checkbox checkbox-success">
-                                                        <input id="active" type="checkbox">
-                                                        <label for="active">
-                                                        </label>
-                                                    </div>
-                                                @endif
+                                                <div class="checkbox checkbox-success">
+                                                    <input onclick="changeActive(this, {{ $loop->iteration }}, {{ $product->id }})" name="active" id="active{{ $loop->iteration }}" type="checkbox" {{ $product->active == 1 ? 'checked':'' }}>
+                                                    <label for="active{{ $loop->iteration }}">
+                                                    </label>
+                                                </div>
                                             </td>
                                             <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="admin/product/delete/{{$product->id}}">Xóa</a></td>
                                             <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="admin/product/edit/{{$product->id}}">Sửa</a></td>
@@ -78,4 +70,18 @@
         </div>
     </div>
     <div style="float: right;">{!! $products->links() !!}</div>
+@endsection
+@section('script')
+    <script>
+        function changeActive(_this, index, id) {
+            $.ajax({
+               type: "POST",
+               url: 'admin/product/change_active/'+ id,
+               data: {
+                    active: _this.checked,
+                    _token: '{{csrf_token()}}'
+               },
+            })
+        }
+    </script>
 @endsection

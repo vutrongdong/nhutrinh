@@ -14,23 +14,26 @@ class BlogUpdateRequest extends FormRequest
     public function rules()
     {
 ;        return [
-            'slug' => "unique:blogs,slug,".$this->id,
-            'title' => "unique:blogs,title,".$this->id,
+            'title'       => "required|unique:blogs,title,".$this->id,
             'teaser'      => 'required|min:10|max:255',
             'content'     => 'required|min:30',
+            'category_id' => 'required',
+            'image'       => 'required',
         ];
     }
 
     public function messages()
     {
         return [
-            'slug.unique' => "Tên không dấu không được trùng",
-            'title.unique' => "Tiêu đề không được trùng",
+            'title.unique'         => "Tiêu đề không được trùng",
+            'title.required'       => 'Tiêu đề không được để trống',
             'teaser.required'      => 'Giới thiệu ngắn không được để trống.',
             'teaser.min'           => 'Giới thiệu ngắn không được ít hơn :min ký tự.',
             'teaser.max'           => 'Giới thiệu ngắn không được lớn hơn :max ký tự.',
+            'image.required'       => 'Hình ảnh không được để trống.',
             'content.required'     => 'Nội dung không được để trống.',
             'content.min'          => 'Nội dung không được ít hơn :min ký tự.',
+            'category_id.required' => 'Bạn chưa chọn danh mục cha.',
         ];
     }
     /**

@@ -18,12 +18,11 @@ class CreateProductTable extends Migration
             $table->string('title');
             $table->string('code');
             $table->string('slug');
-            $table->integer('price');
+            $table->string('price');
             $table->integer('date')->nullable();
             $table->string('image');
             $table->string('image_path');
-            $table->integer('category_id')->unsigned()->index();
-            $table->string('note');
+            $table->string('note')->nullable();
             $table->boolean('active')->default(true);
             $table->timestamps();
         });

@@ -7,6 +7,7 @@ use Illuminate\Routing\Controller;
 use App\Http\Requests\BlogUpdateRequest;
 use App\Http\Requests\BlogAddRequest;
 use App\Blog;
+use App\Category;
 
 class BlogController extends Controller
 {
@@ -17,28 +18,66 @@ class BlogController extends Controller
         return view('admin.blog.list')->with(compact('blogs', 'search'));
     }
 
-    public function show($id)
+    public function getAdd()
     {
-        $data = $this->blogService->show($id);
-        return $this->returnSuccess($data);
+        $category_blog = Category::where('slug', 'blog')->first();
+        $categories = Category::where('parent_id', $category_blog->id)->get();
+        return view('admin.blog.add')->with(compact('categories'));
     }
 
-    public function createBlog(BlogAddRequest $request)
+    public function postAdd(BlogAddRequest $request)
     {
-        $data = $this->blogService->createBlog($request->all());
-        return $this->returnSuccess($data);
+        $data = $request->only('title', 'content', 'image', 'teaser', 'category_id');
+        if($request->active == 'on') {
+            $data['active'] = 1;
+        } else {
+            $data['active'] = 0;
+        }
+        $data['slug'] = str_slug($request->title); 
+        $data['image_path'] = $request->image;
+        $blog = Blog::create($data);
+        return redirect('admin/blog/list')->with('thongbao', 'Bạn đã thêm bài viết thành công');
     }
 
-    public function updadeBlog(BlogUpdateRequest $request, $id)
+    public function getEdit($id)
     {
-        $data = $this->blogService->updadeBlog($request, $id);
-        return $this->returnSuccess($data);
+        $blog = Blog::find($id);
+        $category_blog = Category::where('slug', 'blog')->first();
+        $categories = Category::where('parent_id', $category_blog->id)->get();
+        return view('admin.blog.edit')->with(compact('categories', 'blog'));
     }
 
-    public function removeBlog($id)
+    public function postEdit(BlogUpdateRequest $request, $id)
     {
-        $data = $this->blogService->removeBlog($id);
-        return $this->returnSuccess($data);
+        $blog = Blog::find($id);
+        $data = $request->only('title', 'content', 'image', 'teaser', 'category_id');
+        if($request->active == 'on') {
+            $data['active'] = 1;
+        } else {
+            $data['active'] = 0;
+        }
+        $data['slug'] = str_slug($request->title); 
+        $data['image_path'] = $request->image;
+        $blog->fill($data)->save();
+        return redirect('admin/blog/list')->with('thongbao', 'Bạn đã sửa bài viết thành công');
+    }
+
+    public function changeActive(Request $request, $id) {
+        $blog = Blog::find($id);
+        $data = [];
+        if($request->active == 'true') {
+            $data['active'] = 1;
+        } else {
+            $data['active'] = 0;
+        }
+        $blog->fill($data)->save();
+    }
+
+    public function destroy($id)
+    {
+        $blog = Blog::find($id);
+        $blog->delete();
+        return redirect('admin/blog/list')->with('thongbao', 'Bạn đã xóa thành công');
     }
     
     public function uploadImage(Request $request) {

@@ -4,45 +4,78 @@
         <div class="col-12">
             <div style="margin-left: 15px;">
                 <h4 class="page-title">
-                    Sửa danh mục
+                    Sửa bài viết
                 </h4>
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="admin/">Bảng điều khiển</a></li>
-                    <li class="breadcrumb-item"><a href="admin/category/list">Danh mục</a></li>
-                    <li class="breadcrumb-item active">Sửa danh mục</li>
+                    <li class="breadcrumb-item"><a href="admin/blog/list">Bài viết</a></li>
+                    <li class="breadcrumb-item active">Sửa bài viết</li>
                 </ol>
                 <p class="clearfix"></p>
             </div>
             <div class="card">
                 <div class="card-body">
-                    <form action="/admin/category/edit/{{ $category->id }}" method="POST">
+                    <form action="admin/blog/edit/{{ $blog->id }}" method="POST">
                         <input type="hidden" name="_token" value="{{csrf_token()}}" />
                         <div class="row">
                             <div class="col-6">
                                 <div class="form-group">
-                                    <label>Tên danh mục</label>
-                                    <input value="{{ $category->title }}" class="form-control" name="title" placeholder="Điền tên danh mục" />
-                                    <div class="clearFix"></div>
+                                    <label class="text-right" for="title">Tên bài viết (<span class="text-danger">*</span>)</label>
+                                    <input value="{{ $blog->title }}" type="text" id="title" placeholder="Nhập tên" name="title"  class="form-control">
                                     @if( $errors->has('title'))
-                                         <p style="color: red;">{{ $errors->first('title') }}</p>
+                                         <p class="text-danger">{{ $errors->first('title') }}</p>
                                     @endif
+                                </div>
+                                <div class="form-group">
+                                    <label class="text-right" for="category_id"> Danh mục cha (<span class="text-danger">*</span>)</label>
+                                    <select class="form-control" name="category_id">
+                                        <option value=''>Chọn danh mục</option>
+                                        @foreach($categories as $category)
+                                            <option value="{{ $category->id }}" {{ $category->id == $blog->category_id ? 'selected':'' }}>{{ $category->title }}</option>
+                                        @endforeach
+                                    </select>
+                                    @if( $errors->has('category_id'))
+                                         <p class="text-danger">{{ $errors->first('category_id') }}</p>
+                                    @endif
+                                </div>
+                                <div class="form-group">
+                                    <label class="text-right" for="image" style="margin-top: 6px;">Ảnh (<span class="text-danger">*</span>)</label>
+                                    <div class="upload">
+                                        <label>
+                                            <input value="{{ $blog->image }}" id="image" type="file" name="image">
+                                            <div class="clearfix"></div>
+                                        </label>
+                                    </div>
+                                    @if( $errors->has('image'))
+                                        <p class="text-danger">{{ $errors->first('image') }}</p>
+                                    @endif
+                                </div>
+                                <div class="form-group">
+                                    <label>Trạng thái</label>
+                                    <div class="checkbox checkbox-success">
+                                        <input name="active" id="active" type="checkbox" {{ $blog->active == 1 ? 'checked':'' }}>
+                                        <label for="active">
+                                            Hiển thị
+                                        </label>
+                                    </div>
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="form-group">
-                                    <label>Danh mục cha</label>
-                                        <select class="form-control" name="parent_id">
-                                            <option value="0">Chọn danh mục</option>
-                                            @foreach($categorySelect as $cate)
-                                                @if($category->parent_id == $cate->id)
-                                                    <option value="{{ $cate->id }}" selected>{{ $cate->title }}</option>
-                                                @else
-                                                    <option value="{{ $cate->id }}">{{ $cate->title }}</option>
-                                                @endif
-                                            @endforeach
-                                        </select>
+                                    <label class="text-right" for="teaser">Mô tả ngắn</label>
+                                    <textarea rows="12" id="teaser" class="form-control" name="teaser" placeholder="Mô tả ngắn">{{ $blog->teaser }}</textarea>
+                                    @if( $errors->has('teaser'))
+                                        <p class="text-danger">{{ $errors->first('teaser') }}</p>
+                                    @endif
                                 </div>
                             </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Nội dung</label>
+                            <textarea name="content" class="form-control ckeditor" rows="3">{{ $blog->content }}</textarea>
+                            @if( $errors->has('content'))
+                                <p class="text-danger">{{ $errors->first('content') }}</p>
+                            @endif
                         </div>
                         <hr>
                         <div class="row">
