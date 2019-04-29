@@ -23,8 +23,8 @@
     <link rel="stylesheet" type="text/css" href="admin_assets/plugins/sweet-alert2/sweetalert2.min.css">
     <script src="admin_assets/js/modernizr.min.js"></script>
     <script src="admin_assets/ckeditor/ckeditor.js" ></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="js/muilty_select.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 <body class="fixed-left">
     <div id="wrapper">

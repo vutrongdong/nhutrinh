@@ -28,7 +28,7 @@ class CategoryController extends Controller
     	$category->parent_id = str_slug($request->parent_id);
     	$category->save();
 
-    	return redirect('admin/category/list')->with('thongbao', 'Bạn đã thêm danh mục thành công');    	
+    	return redirect('admin/category/list')->with('thongbao', 'Bạn đã thêm danh mục thành công');	
     }
 
     public function getEdit($id){

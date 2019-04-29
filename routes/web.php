@@ -78,3 +78,10 @@ Route::group(['prefix' => 'admin', 'middleware' => ['adminLogin']], function(){
 		Route::post('/update', 'SettingController@update');
 	});
 });
+
+
+Route::prefix('/')->group(function () {
+	Route::get('/', function () {
+	    return view('home.index');
+	});
+});
