@@ -229,3 +229,48 @@ footer .footer-content {
 #blog .title,.summary {
   padding-left: 5px;
 }
+
+/*san pham*/
+.page-product {
+  text-align: center;
+  padding: 20px 0;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.all-product .bg {
+  height: 300px;
+  margin-top: 20px;
+}
+
+.product-image {
+  margin-bottom: 0;
+  min-height: 200px;
+  position: relative;
+  text-align: center;
+  box-sizing: border-box;
+  background-color: transparent;
+}
+
+.product-image img {
+  max-width: 100%;
+  height: auto;
+  vertical-align: middle;
+  font-size: 0;
+}
+
+.product-container .product-title {
+  height: 42px;
+  vertical-align: middle;
+  white-space: normal;
+  font-size: 14px;
+  display: block;
+  padding: 5px 5px 0 5px;
+  text-align: center;
+  line-height: 18px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  overflow: hidden;
+  color: #282828;
+}

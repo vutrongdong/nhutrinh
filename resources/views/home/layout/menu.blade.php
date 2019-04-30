@@ -11,21 +11,21 @@
         <ul class="navbar-nav mx-auto">
             @foreach($categories_menu as $menu)
                 <li class="nav-item dropdown">
-                    <a class="nav-link text-uppercase" href="#">{{ $menu->title }}</a>
+                    <a class="nav-link text-uppercase" href="/{{ $menu->slug }}">{{ $menu->title }}</a>
                     <div class="dropdown-content">
                         @foreach($menu->children as $children)
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item text-uppercase" href="#">{{ $children->title }}</a>
+                            <a class="dropdown-item text-uppercase" href="/{{ $menu->slug }}/{{ $children->slug }}">{{ $children->title }}</a>
                         @endforeach
                     </div>
                 </li>
             @endforeach
             <li class="nav-item dropdown">
-                <a class="nav-link text-uppercase" href="#">{{ $categories_blog_menu->title }}</a>
+                <a class="nav-link text-uppercase" href="/{{ $categories_blog_menu->slug }}">{{ $categories_blog_menu->title }}</a>
                 <div class="dropdown-content">
                     @foreach($categories_blog_menu->children as $children)
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item text-uppercase" href="#">{{ $children->title }}</a>
+                        <a class="dropdown-item text-uppercase" href="/{{ $categories_blog_menu->slug }}/{{ $children->slug }}">{{ $children->title }}</a>
                     @endforeach
                 </div>
             </li>

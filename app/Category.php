@@ -19,4 +19,9 @@ class Category extends Authenticatable {
     {
         return $this->hasMany('App\Category', 'parent_id');
     }
+
+    public function products()
+    {
+        return $this->belongsToMany('App\Product', 'category_product', 'category_id', 'product_id');
+    }
 }
