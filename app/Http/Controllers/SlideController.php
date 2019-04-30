@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Slide;
+use App\Http\Requests\SlideAddRequest;
+use App\Http\Requests\SlideUpdateRequest;
 class SlideController extends Controller
 {
     public function index(Request $request){
@@ -16,37 +18,22 @@ class SlideController extends Controller
         return view('admin.slide.add');
     }
 
-    public function postAdd(Request $request)
+    public function postAdd(SlideAddRequest $request)
     {
-        $this->validate($request, 
-            [
-                'title' => 'required',
-            ],
-            [
-            	'title.required' => 'Bạn chưa nhập tên',
-            ]);
         $slide = new Slide;
         $slide->title = $request->title;
-        if($request->hasFile('image'))
+
+        $file = $request->file('image');
+        $duoi = $file->getClientOriginalExtension();
+        if($duoi!='jpg' && $duoi!='png' && $duoi!='jpeg')
         {
-            $file = $request->file('image');
-            $duoi = $file->getClientOriginalExtension();
-            if($duoi!='jpg' && $duoi!='png' && $duoi!='jpeg')
-            {
-                return redirect('admin/slide/add')->with('loi', 'Bạn chỉ được phép nhập ảnh có đuôi jpg, png, jpeg');
-            }
-            $name = $file->getClientOriginalName();
-            $image = str_random(5)."_".$name;
-            while(file_exists('upload/slide/'.$image))
-            {
-                $image = $name;
-            }
-            $file->move('upload/slide', $image);
-            imagejpeg($this->resize_image('upload/slide/'.$image, 1200, 500), 'upload/slide/'.$image);
-            $slide->image = $image;
-        } else {
-            return redirect('admin/slide/add')->with('loi', 'Bạn chưa chọn ảnh slide');
+            return redirect('admin/slide/add')->with('loi', 'Bạn chỉ được phép nhập ảnh có đuôi jpg, png, jpeg');
         }
+        $image = date('Y_m_d') ."_".date("h:i:sa"). '_' .$file->getClientOriginalName();
+        $file->move('upload/slide', $image);
+        imagejpeg($this->resize_image('upload/slide/'.$image, 1200, 500), 'upload/slide/'.$image);
+        $slide->image = $image;
+
         $slide->slug = str_slug($request->title);
         $slide->image_path = '';
         $slide->save();
@@ -56,14 +43,7 @@ class SlideController extends Controller
         $slide = Slide::find($id);
         return view('admin.slide.edit', ['slide'=>$slide]);
     }
-    public function postSua(Request $request, $id){
-        $this->validate($request, 
-            [
-                'title' => 'required',
-            ],
-            [
-                'title.required' => 'Bạn chưa nhập tên',
-        ]);
+    public function postSua(SlideUpdateRequest $request, $id){
         $slide = Slide::find($id);
         $slide->title = $request->title;
         $slide->slug = str_slug($request->title);
@@ -75,18 +55,13 @@ class SlideController extends Controller
             {
                 return redirect('admin/slide/edit/'.$id)->with('loi', 'Bạn chỉ được phép nhập ảnh có đuôi jpg, png, jpeg');
             }
-            $name = $file->getClientOriginalName();
-            $image = str_random(5)."_".$name;
-            while(file_exists('upload/slide/'.$image))
-            {
-                $image = $name;
-            }
+            $image = date('Y_m_d') ."_".date("h:i:sa"). '_' .$file->getClientOriginalName();
             $file->move('upload/slide', $image);
             imagejpeg($this->resize_image('upload/slide/'.$image, 1200, 500), 'upload/slide/'.$image);
-            unlink('upload/slide/'.$slide->image);
+            if (file_exists('upload/slide/'.$slide->image)) {
+                unlink('upload/slide/'.$slide->image);
+            }
             $slide->image = $image;
-        } else {
-        	// return redirect('admin/slide/edit/'.$id)->with('loi', 'Bạn chưa chọn ảnh cần thay đổi');
         }
         $slide->save();
 	    return redirect('admin/slide/list')->with('thongbao', 'Bạn đã sửa slide thành công');
@@ -95,24 +70,6 @@ class SlideController extends Controller
         $slide = Slide::find($id);
         $slide->delete();
         return redirect('admin/slide/list')->with('thongbao', 'Bạn đã xóa Slide thành công');
-    }
-
-    public function uploadImage(Request $request) {
-        $slide = new Slide;
-        if ($request->file('file')) {
-            $image = $request->file('file');
-        } else {
-            $image = $request->file('files')[0];
-        }
-        if ($request->input('imageOld')) {
-            $imageOld = $request->input('imageOld');
-        } else {
-            $imageOld = null;
-        }
-        if ($request->input('resize')) {
-            return $slide->upload($image, true, $imageOld);
-        }
-        return $slide->upload($image, false, $imageOld);
     }
 
     public function resize_image($file, $w, $h, $crop=FALSE) {
