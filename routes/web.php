@@ -84,5 +84,6 @@ Route::prefix('/')->group(function () {
 	Route::get('/bai-viet-noi-bat/{slug}', 'HomeController@detailBlog');
 	Route::get('/blog', 'HomeController@blogAll');
 	Route::get('/{category_level_one}', 'HomeController@productAll');
+	Route::get('/{category_level_one}/{category_level_two}/{product}', 'HomeController@productDetail');
 });
 Route::post('/slide/upload', 'SlideController@uploadImage');

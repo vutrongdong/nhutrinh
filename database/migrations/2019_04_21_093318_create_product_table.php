@@ -22,7 +22,7 @@ class CreateProductTable extends Migration
             $table->integer('date')->nullable();
             $table->string('image');
             $table->string('image_path');
-            $table->string('note')->nullable();
+            $table->text('note')->nullable();
             $table->boolean('active')->default(true);
             $table->timestamps();
         });

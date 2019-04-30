@@ -39,6 +39,20 @@
                                     @endif
                                 </div>
                                 <div class="form-group">
+                                    <label class="text-right" for="image" style="margin-top: 6px;">Ảnh (<span class="text-danger">*</span>)</label>
+                                    <div class="upload">
+                                        <label>
+                                            <input class="form-control" id="image" type="file" name="image">
+                                            <div class="clearfix"></div>
+                                        </label>
+                                    </div>
+                                    <p>
+                                        <img src="upload/product/{{$product->image}}"/>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
                                     <label class="text-right" for="category"> Danh mục cha (<span class="text-danger">*</span>)</label><br>
                                     <select name="categories[]" multiple="multiple" id="selectWhenAdd">
                                         @foreach($category_product as $category)
@@ -57,34 +71,7 @@
                                         <p class="text-danger">{{ $errors->first('price') }}</p>
                                     @endif
                                 </div>
-                                <div class="form-group">
-                                    <label class="text-right" for="image" style="margin-top: 6px;">Ảnh (<span class="text-danger">*</span>)</label>
-                                    <div class="upload">
-                                        <label>
-                                            <input class="form-control" id="image" type="file" name="image">
-                                            <div class="clearfix"></div>
-                                        </label>
-                                    </div>
-                                    <p>
-                                        <img src="upload/product/{{$product->image}}"/>
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="col-6">
-                                <div class="form-group">
-                                    <label class="text-right" for="note">Mô tả ngắn</label>
-                                    <textarea rows="12" id="note" class="form-control" name="note" placeholder="Mô tả ngắn">{{ $product->note }}</textarea>
-                                </div>
                                 <div class="row">
-                                    <div class="col-6">
-                                        <label>Trạng thái</label>
-                                        <div class="checkbox checkbox-success">
-                                            <input name="active" id="active" type="checkbox" {{ $product->active ? 'checked':''}}>
-                                            <label for="active">
-                                                Hiển thị
-                                            </label>
-                                        </div>
-                                    </div>
                                     <div class="col-6">
                                         <label for="date">Chọn năm</label>
                                         <select class="form-control" name="date">
@@ -98,8 +85,24 @@
                                             @endforeach
                                         </select>
                                     </div>
+                                    <div class="col-6 mt-2">
+                                        <label>Trạng thái</label>
+                                        <div class="checkbox checkbox-success">
+                                            <input name="active" id="active" type="checkbox" {{ $product->active ? 'checked':''}}>
+                                            <label for="active">
+                                                Hiển thị
+                                            </label>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Mô tả ngắn</label>
+                            <textarea name="note" class="form-control ckeditor" rows="3">{{ $product->note }}</textarea>
+                            @if( $errors->has('note'))
+                                <p class="text-danger">{{ $errors->first('note') }}</p>
+                            @endif
                         </div>
                         <hr>
                         <div class="row">
