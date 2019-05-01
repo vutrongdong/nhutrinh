@@ -21,7 +21,7 @@ class BlogTableSeeder extends Seeder
                 'teaser' => 'Giá vàng miếng SJC tiếp tục tăng mạnh trong buổi chiều 12/8 , tiến sát mốc 34 triệu đồng/ lượng , tỏng khi giá USD trên thị trường tự do cũng vượt mốc 22.000 đồng/USD',
                 'content' => 'nội dung bài viết 1',
                 'active' => 1,
-                'category_id' => 2,
+                'category_id' => 1,
                 'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
             ],
@@ -33,7 +33,7 @@ class BlogTableSeeder extends Seeder
                 'teaser' => 'Giá vàng miếng SJC tiếp tục tăng mạnh trong buổi chiều 12/8 , tiến sát mốc 34 triệu đồng/ lượng , tỏng khi giá USD trên thị trường tự do cũng vượt mốc 22.000 đồng/USD',
                 'content' => 'nội dung bài viết 2',
                 'active' => 1,
-                'category_id' => 2,
+                'category_id' => 1,
                 'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
             ],
@@ -45,7 +45,7 @@ class BlogTableSeeder extends Seeder
                 'teaser' => 'Giá vàng miếng SJC tiếp tục tăng mạnh trong buổi chiều 12/8 , tiến sát mốc 34 triệu đồng/ lượng , tỏng khi giá USD trên thị trường tự do cũng vượt mốc 22.000 đồng/USD',
                 'content' => 'nội dung bài viết 3',
                 'active' => 0,
-                'category_id' => 2,
+                'category_id' => 1,
                 'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
             ],
@@ -57,7 +57,7 @@ class BlogTableSeeder extends Seeder
                 'teaser' => 'Giá vàng miếng SJC tiếp tục tăng mạnh trong buổi chiều 12/8 , tiến sát mốc 34 triệu đồng/ lượng , tỏng khi giá USD trên thị trường tự do cũng vượt mốc 22.000 đồng/USD',
                 'content' => 'nội dung bài viết 4',
                 'active' => 1,
-                'category_id' => 2,
+                'category_id' => 1,
                 'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
             ],
@@ -69,7 +69,7 @@ class BlogTableSeeder extends Seeder
                 'teaser' => 'Giá vàng miếng SJC tiếp tục tăng mạnh trong buổi chiều 12/8 , tiến sát mốc 34 triệu đồng/ lượng , tỏng khi giá USD trên thị trường tự do cũng vượt mốc 22.000 đồng/USD',
                 'content' => 'nội dung bài viết 5',
                 'active' => 0,
-                'category_id' => 2,
+                'category_id' => 1,
                 'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
             ],
@@ -81,7 +81,7 @@ class BlogTableSeeder extends Seeder
                 'teaser' => 'Giá vàng miếng SJC tiếp tục tăng mạnh trong buổi chiều 12/8 , tiến sát mốc 34 triệu đồng/ lượng , tỏng khi giá USD trên thị trường tự do cũng vượt mốc 22.000 đồng/USD',
                 'content' => 'nội dung bài viết 6',
                 'active' => 1,
-                'category_id' => 3,
+                'category_id' => 1,
                 'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
             ],
@@ -93,7 +93,7 @@ class BlogTableSeeder extends Seeder
                 'teaser' => 'Giá vàng miếng SJC tiếp tục tăng mạnh trong buổi chiều 12/8 , tiến sát mốc 34 triệu đồng/ lượng , tỏng khi giá USD trên thị trường tự do cũng vượt mốc 22.000 đồng/USD',
                 'content' => 'nội dung bài viết 7',
                 'active' => 1,
-                'category_id' => 3,
+                'category_id' => 1,
                 'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
             ],
@@ -105,7 +105,7 @@ class BlogTableSeeder extends Seeder
                 'teaser' => 'Giá vàng miếng SJC tiếp tục tăng mạnh trong buổi chiều 12/8 , tiến sát mốc 34 triệu đồng/ lượng , tỏng khi giá USD trên thị trường tự do cũng vượt mốc 22.000 đồng/USD',
                 'content' => 'nội dung bài viết 8',
                 'active' => 1,
-                'category_id' => 3,
+                'category_id' => 1,
                 'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
             ],

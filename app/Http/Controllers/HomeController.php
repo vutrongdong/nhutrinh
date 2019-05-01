@@ -13,6 +13,18 @@ class HomeController extends Controller
         return view('home.index');
     }
 
+    public function listBlog() {
+        $category_blog = Category::where('slug', 'blog')->first();
+        $blogs = Blog::where([
+                            ['category_id', $category_blog->id],
+                            ['active', 1]
+                        ])
+                        ->orderBy('view', 'DESC')
+                        ->orderBy('created_at', 'DESC')
+                        ->paginate(12);
+        return view('home.list_blog')->with(compact('blogs', 'category_blog'));
+    }
+
     public function detailBlog($slug) {
     	$blog = Blog::where('slug', $slug)->first();
     	$blog->view += 1;
@@ -20,24 +32,17 @@ class HomeController extends Controller
     	return view('home.blog_detail')->with(compact('blog'));
     }
 
-    public function productAll($category_level_one) {
-    	$category = Category::where('slug', $category_level_one)->first();
-    	// $categories_products = Category::where('parent_id', $category->id)->with('products')->get();
-    	// $products = [];
-    	// for($index=0; $index< count($categories_products); $index++) {
-    	// 	for($indexProduct=0; $indexProduct< count($categories_products[$index]->products); $indexProduct++) {
-    	// 		array_push($products, $categories_products[$index]->products[$indexProduct]);
-    	// 	}
-    	// }
-    	// dd($products->paginate(5));
-    	$categories_products = Category::where('parent_id', $category->id)->with('products')->get();
-    	return view('home.list_product')->with(compact('categories_products', 'category'));
-    }
-
     public function productDetail($category_level_one, $category_level_two, $product) {
         $category_one = Category::where('slug', $category_level_one)->first();
         $category_two = Category::where('slug', $category_level_two)->first();
         $product_info = Product::where('slug', $product)->first();
         return view('home.product_detail')->with(compact('product_info', 'category_one', 'category_two'));
+    }
+
+    public function listProduct($category_level_one, $category_level_two) {
+        $category_one = Category::where('slug', $category_level_one)->first();
+        $category_two = Category::where('slug', $category_level_two)->first();
+        $category_product = Category::where('slug', $category_level_two)->first()->products()->paginate(12);
+        return view('home.list_product')->with(compact('category_one', 'category_two', 'category_product'));
     }
 }

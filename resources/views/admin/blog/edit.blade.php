@@ -28,11 +28,8 @@
                                 </div>
                                 <div class="form-group">
                                     <label class="text-right" for="category_id"> Danh mục cha (<span class="text-danger">*</span>)</label>
-                                    <select class="form-control" name="category_id">
-                                        <option value=''>Chọn danh mục</option>
-                                        @foreach($categories as $category)
-                                            <option value="{{ $category->id }}" {{ $category->id == $blog->category_id ? 'selected':'' }}>{{ $category->title }}</option>
-                                        @endforeach
+                                    <select disabled class="form-control" name="category_id">
+                                        <option value="{{ $category->id }}">{{ $category->title }}</option>
                                     </select>
                                     @if( $errors->has('category_id'))
                                          <p class="text-danger">{{ $errors->first('category_id') }}</p>
