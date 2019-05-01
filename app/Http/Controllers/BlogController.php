@@ -42,7 +42,7 @@ class BlogController extends Controller
             {
                 return back()->with('errorCheck', 'Bạn chỉ được phép nhập ảnh có đuôi jpg, png, jpeg');
             }
-            $image = date('Y_m_d') ."_".date("h:i:sa"). '_' .$file->getClientOriginalName();
+            $image = date('Y_m_d') ."_".date("h:i:sa"). '.' .$duoi;
             $file->move('upload/blog', $image);
             imagejpeg($this->resize_image('upload/blog/'.$image, 800, 800), 'upload/blog/'.$image);
             $data['image'] = $image;
@@ -81,7 +81,7 @@ class BlogController extends Controller
             {
                 return back()->with('errorCheck', 'Bạn chỉ được phép nhập ảnh có đuôi jpg, png, jpeg');
             }
-            $image = date('Y_m_d') ."_".date("h:i:sa"). '_' .$file->getClientOriginalName();
+            $image = date('Y_m_d') ."_".date("h:i:sa"). '.' .$duoi;
             $file->move('upload/blog', $image);
             imagejpeg($this->resize_image('upload/blog/'.$image, 900, 600), 'upload/blog/'.$image);
             if (file_exists('upload/blog/'.$blog->image)) {

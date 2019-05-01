@@ -29,7 +29,7 @@ class SlideController extends Controller
         {
             return redirect('admin/slide/add')->with('loi', 'Bạn chỉ được phép nhập ảnh có đuôi jpg, png, jpeg');
         }
-        $image = date('Y_m_d') ."_".date("h:i:sa"). '_' .$file->getClientOriginalName();
+        $image = date('Y_m_d') ."_".date("h:i:sa"). '.' .$duoi;
         $file->move('upload/slide', $image);
         imagejpeg($this->resize_image('upload/slide/'.$image, 1200, 500), 'upload/slide/'.$image);
         $slide->image = $image;
@@ -55,7 +55,7 @@ class SlideController extends Controller
             {
                 return redirect('admin/slide/edit/'.$id)->with('loi', 'Bạn chỉ được phép nhập ảnh có đuôi jpg, png, jpeg');
             }
-            $image = date('Y_m_d') ."_".date("h:i:sa"). '_' .$file->getClientOriginalName();
+            $image = date('Y_m_d') ."_".date("h:i:sa"). '.' .$duoi;
             $file->move('upload/slide', $image);
             imagejpeg($this->resize_image('upload/slide/'.$image, 1200, 500), 'upload/slide/'.$image);
             if (file_exists('upload/slide/'.$slide->image)) {

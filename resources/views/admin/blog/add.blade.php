@@ -69,7 +69,7 @@
                         </div>
                         <div class="form-group">
                             <label>Nội dung</label>
-                            <textarea name="content" class="form-control ckeditor" rows="3">{{ old('content') }}</textarea>
+                            <textarea name="content" id="content" class="form-control ckeditor" rows="3">{{ old('content') }}</textarea>
                             @if( $errors->has('content'))
                                 <p class="text-danger">{{ $errors->first('content') }}</p>
                             @endif
@@ -86,4 +86,16 @@
             </div>
         </div>
     </div>
+@endsection
+@section('script')
+    <script>
+        CKEDITOR.replace( 'content', {
+            filebrowserBrowseUrl: '{{ asset('admin_assets/ckfinder/ckfinder.html') }}',
+            filebrowserImageBrowseUrl: '{{ asset('admin_assets/ckfinder/ckfinder.html?type=Images') }}',
+            filebrowserFlashBrowseUrl: '{{ asset('admin_assets/ckfinder/ckfinder.html?type=Flash') }}',
+            filebrowserUploadUrl: '{{ asset('admin_assets/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files') }}',
+            filebrowserImageUploadUrl: '{{ asset('admin_assets/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images') }}',
+            filebrowserFlashUploadUrl: '{{ asset('admin_assets/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash') }}'
+        });
+    </script>
 @endsection

@@ -51,7 +51,7 @@ class ProductController extends Controller
             {
                 return back()->with('errorCheck', 'Bạn chỉ được phép nhập ảnh có đuôi jpg, png, jpeg');
             }
-            $image = date('Y_m_d') ."_".date("h:i:sa"). '_' .$file->getClientOriginalName();
+            $image = date('Y_m_d') ."_".date("h:i:sa"). '.' .$duoi;
             $file->move('upload/product', $image);
             imagejpeg($this->resize_image('upload/product/'.$image, 600, 600), 'upload/product/'.$image);
             $data['image'] = $image;
@@ -125,7 +125,7 @@ class ProductController extends Controller
                 {
                     return back()->with('errorCheck', 'Bạn chỉ được phép nhập ảnh có đuôi jpg, png, jpeg');
                 }
-                $image = date('Y_m_d') ."_".date("h:i:sa"). '_' .$file->getClientOriginalName();
+                $image = date('Y_m_d') ."_".date("h:i:sa"). '.' .$duoi;
                 $file->move('upload/product', $image);
                 imagejpeg($this->resize_image('upload/product/'.$image, 600, 600), 'upload/product/'.$image);
                 if (file_exists('upload/product/'.$product->image)) {
