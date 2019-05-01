@@ -11,6 +11,9 @@
     <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css'
         integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
     <link rel="stylesheet" type="text/css" href="home_assets/style.css">
+    <link rel="stylesheet" type="text/css" href="home_assets/detail.css">
+    <link href="home_assets/magiczoom/magiczoom.css" rel="stylesheet" type="text/css" media="screen"/>
+    <script src="home_assets/magiczoom/magiczoom.js" type="text/javascript"></script>
 </head>
 
 <body>

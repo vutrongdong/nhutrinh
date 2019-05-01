@@ -53,7 +53,7 @@ class ProductController extends Controller
             }
             $image = date('Y_m_d') ."_".date("h:i:sa"). '_' .$file->getClientOriginalName();
             $file->move('upload/product', $image);
-            imagejpeg($this->resize_image('upload/product/'.$image, 200, 200), 'upload/product/'.$image);
+            imagejpeg($this->resize_image('upload/product/'.$image, 600, 600), 'upload/product/'.$image);
             $data['image'] = $image;
             // end image
             $product = Product::create($data);
@@ -127,7 +127,7 @@ class ProductController extends Controller
                 }
                 $image = date('Y_m_d') ."_".date("h:i:sa"). '_' .$file->getClientOriginalName();
                 $file->move('upload/product', $image);
-                imagejpeg($this->resize_image('upload/product/'.$image, 200, 200), 'upload/product/'.$image);
+                imagejpeg($this->resize_image('upload/product/'.$image, 600, 600), 'upload/product/'.$image);
                 if (file_exists('upload/product/'.$product->image)) {
                     unlink('upload/product/'.$product->image);
                 }

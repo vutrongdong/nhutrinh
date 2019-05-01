@@ -37,7 +37,7 @@ class HomeController extends Controller
     public function productDetail($category_level_one, $category_level_two, $product) {
         $category_one = Category::where('slug', $category_level_one)->first();
         $category_two = Category::where('slug', $category_level_two)->first();
-        $product_info = Product::where('slug', $product)->get();
+        $product_info = Product::where('slug', $product)->first();
         return view('home.product_detail')->with(compact('product_info', 'category_one', 'category_two'));
     }
 }

@@ -47,7 +47,7 @@
                                         </label>
                                     </div>
                                     <p>
-                                        <img src="upload/product/{{$product->image}}"/>
+                                        <img style="width: 200px;" src="upload/product/{{$product->image}}"/>
                                     </p>
                                 </div>
                             </div>
