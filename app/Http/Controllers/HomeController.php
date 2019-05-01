@@ -42,7 +42,7 @@ class HomeController extends Controller
     public function listProduct($category_level_one, $category_level_two) {
         $category_one = Category::where('slug', $category_level_one)->first();
         $category_two = Category::where('slug', $category_level_two)->first();
-        $category_product = Category::where('slug', $category_level_two)->first()->products()->paginate(12);
+        $category_product = Category::where('slug', $category_level_two)->first()->products()->where('active', 1)->paginate(12);
         return view('home.list_product')->with(compact('category_one', 'category_two', 'category_product'));
     }
 }
