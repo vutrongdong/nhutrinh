@@ -20,9 +20,9 @@ class BlogController extends Controller
 
     public function getAdd()
     {
-        $category_blog = Category::where('slug', 'blog')->first();
-        $categories = Category::where('parent_id', $category_blog->id)->get();
-        return view('admin.blog.add')->with(compact('categories'));
+        $category = Category::where('slug', 'blog')->first();
+        // $categories = Category::where('parent_id', $category_blog->id)->get();
+        return view('admin.blog.add')->with(compact('category'));
     }
 
     public function postAdd(BlogAddRequest $request)
@@ -57,9 +57,9 @@ class BlogController extends Controller
     public function getEdit($id)
     {
         $blog = Blog::find($id);
-        $category_blog = Category::where('slug', 'blog')->first();
-        $categories = Category::where('parent_id', $category_blog->id)->get();
-        return view('admin.blog.edit')->with(compact('categories', 'blog'));
+        $category = Category::where('slug', 'blog')->first();
+        // $categories = Category::where('parent_id', $category_blog->id)->get();
+        return view('admin.blog.edit')->with(compact('category', 'blog'));
     }
 
     public function postEdit(BlogUpdateRequest $request, $id)

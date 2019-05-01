@@ -264,3 +264,16 @@ img {
     display: none !important;
   }
 }
+
+.paginate_product_list {
+  width:200px !important; 
+  margin: 0 auto !important;
+  margin-top: 30px !important;
+}
+
+.blog {
+    text-align: center;
+    padding: 20px 0;
+    text-transform: uppercase;
+    font-weight: bold;
+}

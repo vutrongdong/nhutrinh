@@ -104,9 +104,9 @@
     <div class="row" id="blog">
         @foreach($blog_hot as $blog)
             <div class="post col-sm-6 col-md-3 col-xl-3 mb-1 pb-1 blog-item">
-                <a href="/bai-viet-noi-bat/{{ $blog->slug }}"><div style="margin: 0px auto; display: table;"><img src="upload/blog/{{$blog->image}}" alt="" width="100%"></a>
+                <a href="/blog/{{ $blog->slug }}"><div style="margin: 0px auto; display: table;"><img src="upload/blog/{{$blog->image}}" alt="" width="100%"></a>
                 </div>
-                <a href="/bai-viet-noi-bat/{{ $blog->slug }}"><p class="title">{{ $blog->title }}</p></a>
+                <a href="/blog/{{ $blog->slug }}"><p class="title">{{ $blog->title }}</p></a>
                 <p class="summary">
                     {{ $blog->teaser }}
                 </p>

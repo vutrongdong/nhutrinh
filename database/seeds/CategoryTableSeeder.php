@@ -58,20 +58,6 @@ class CategoryTableSeeder extends Seeder
                 'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
             ],
             [
-                'title' => 'Danh mục bài viết 2',
-                'slug' => 'danh_muc_2',
-                'parent_id' => 1,
-                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
-                'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
-            ],
-            [
-                'title' => 'Danh mục bài viết 3',
-                'slug' => 'danh_muc_3',
-                'parent_id' => 1,
-                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
-                'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
-            ],
-            [
                 'title' => 'Bông tai đính đá',
                 'slug' => 'bong_tai_dinh_da',
                 'parent_id' => 2,
