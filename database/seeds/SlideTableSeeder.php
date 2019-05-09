@@ -16,7 +16,7 @@ class SlideTableSeeder extends Seeder
             [
                 'title' => 'Slide 1',
                 'slug' => 'slide-1',
-                'image' => 'image.png',
+                'image' => 'slide1.jpg',
                 'image_path' => 'image.png',
                 'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
@@ -24,7 +24,7 @@ class SlideTableSeeder extends Seeder
             [
                 'title' => 'Slide 2',
                 'slug' => 'slide-2',
-                'image' => 'image.png',
+                'image' => 'slide2.jpg',
                 'image_path' => 'image.png',
                 'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
@@ -32,7 +32,7 @@ class SlideTableSeeder extends Seeder
             [
                 'title' => 'Slide 3',
                 'slug' => 'slide-3',
-                'image' => 'image.png',
+                'image' => 'slide3.jpg',
                 'image_path' => 'image.png',
                 'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
@@ -40,7 +40,7 @@ class SlideTableSeeder extends Seeder
             [
                 'title' => 'Slide 4',
                 'slug' => 'slide-4',
-                'image' => 'image.png',
+                'image' => 'slide1.jpg',
                 'image_path' => 'image.png',
                 'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
@@ -48,7 +48,7 @@ class SlideTableSeeder extends Seeder
             [
                 'title' => 'Slide 5',
                 'slug' => 'slide-5',
-                'image' => 'image.png',
+                'image' => 'slide2.jpg',
                 'image_path' => 'image.png',
                 'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
@@ -56,7 +56,7 @@ class SlideTableSeeder extends Seeder
             [
                 'title' => 'Slide 6',
                 'slug' => 'slide-6',
-                'image' => 'image.png',
+                'image' => 'slide3.jpg',
                 'image_path' => 'image.png',
                 'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
@@ -64,7 +64,7 @@ class SlideTableSeeder extends Seeder
             [
                 'title' => 'Slide 7',
                 'slug' => 'slide-7',
-                'image' => 'image.png',
+                'image' => 'slide1.jpg',
                 'image_path' => 'image.png',
                 'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
@@ -72,7 +72,7 @@ class SlideTableSeeder extends Seeder
             [
                 'title' => 'Slide 8',
                 'slug' => 'slide-8',
-                'image' => 'image.png',
+                'image' => 'slide1.jpg',
                 'image_path' => 'image.png',
                 'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->format('Y-m-d H:i:s')

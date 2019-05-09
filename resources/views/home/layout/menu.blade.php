@@ -1,4 +1,4 @@
-<nav class="container navbar navbar-expand-lg navbar-light bg-light fixed-top">
+<nav class="container navbar navbar-expand-lg bg-white navbar-light fixed-top">
     <a class="navbar-brand" href="/">
         <img src="home_assets/image/logo.png" alt="logo" style="width: 80px">
     </a>

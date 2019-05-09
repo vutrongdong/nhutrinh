@@ -8,6 +8,13 @@ body {
   margin: 0;
   padding: 0;
 }
+
+#navbarSupportedContent ul li a {
+  color: #214188;
+  font-weight: bold;
+  height: 100%;
+  cursor: pointer;
+}
 .dropdown {
   position: relative;
   display: inline-block;
@@ -21,7 +28,7 @@ body {
 .dropdown-content {
   display: none;
   position: absolute;
-  background-color: #f5f5f5;
+  background-color: white;
   z-index: 1;
   list-style: none;
 }

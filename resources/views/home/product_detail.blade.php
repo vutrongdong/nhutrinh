@@ -10,7 +10,7 @@
                 <div class="row">
                     <div class="col-md-6">
                         <h3 class="product-title">{{ $product_info->title }}</h3>
-                        <p class="price">
+                        <p class="price_detail">
                             <span>Giá: </span>{{number_format($product_info->price, 0, ',', '.').' VNĐ'}}
                         </p>
                     </div>

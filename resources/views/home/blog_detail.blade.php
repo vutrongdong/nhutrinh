@@ -14,7 +14,7 @@
             {!! $blog->teaser !!}
         </p>
         <div class="text-center">
-          <img width="100%" src="upload/blog/{{$blog->image}}" alt="">
+          <img width="50%" src="upload/blog/{{$blog->image}}" alt="">
         </div>
         <p class="lead">
             {!! $blog->content !!}

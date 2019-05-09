@@ -13,6 +13,7 @@
                     @endif
                     <form class="form-horizontal m-t-20" method="POST" action="login">
                         @csrf
+                        <h2>ĐĂNG NHẬP</h2>
                         <div class="form-group ">
                             <div class="col-12">
                                 <label for='name'>Tên người dùng</label>

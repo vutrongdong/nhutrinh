@@ -57,7 +57,7 @@
                 <button type="button" class="btn mb-2">XEM THÊM</button>
             </div>
         </div>
-        <div class="col-sm-6 col-md-4 col-xl-4 mb-1 pb-1 infoCategories">
+        <div class="col-sm-6 col-md-4 col-xl-4 mb-1 pb-1 infoCategories pr-0">
             <div class="">
                 <img src="home_assets/image/product4.png" alt="" width="200px">
                 <p class="title">
@@ -82,7 +82,7 @@
                     <button type="button" class="btn mb-2">CHI TIẾT</button>
                 </div>
             </div>
-            <div class="col-lg-8 text-center">
+            <div class="col-lg-8 text-center pr-0">
                 <div class="product">
                     <div class="row">
                         <div id="img" class="col-lg-4 mg-vertical">
@@ -113,5 +113,9 @@
             </div>
         @endforeach
     </div>
-    <div class="btn-more mt-3"><button type="button" class="btn">XEM THÊM</button></div>
+    <div class="btn-more mt-3">
+        <a href="/blog">
+            <button type="button" class="btn">XEM THÊM</button>
+        </a>
+    </div>
 @endsection

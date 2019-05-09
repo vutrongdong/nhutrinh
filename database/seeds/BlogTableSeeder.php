@@ -16,7 +16,7 @@ class BlogTableSeeder extends Seeder
             [
                 'title' => 'Giá Vàng, USD tiếp tục tăng mạnh 1',
                 'slug' => 'bai-viet-1',
-                'image' => 'image.png',
+                'image' => 'blog1.jpg',
                 'image_path' => 'image.png',
                 'teaser' => 'Giá vàng miếng SJC tiếp tục tăng mạnh trong buổi chiều 12/8 , tiến sát mốc 34 triệu đồng/ lượng , tỏng khi giá USD trên thị trường tự do cũng vượt mốc 22.000 đồng/USD',
                 'content' => 'nội dung bài viết 1',
@@ -28,7 +28,7 @@ class BlogTableSeeder extends Seeder
             [
                 'title' => 'Giá Vàng, USD tiếp tục tăng mạnh 2',
                 'slug' => 'bai-viet-2',
-                'image' => 'image.png',
+                'image' => 'blog2.jpg',
                 'image_path' => 'image.png',
                 'teaser' => 'Giá vàng miếng SJC tiếp tục tăng mạnh trong buổi chiều 12/8 , tiến sát mốc 34 triệu đồng/ lượng , tỏng khi giá USD trên thị trường tự do cũng vượt mốc 22.000 đồng/USD',
                 'content' => 'nội dung bài viết 2',
@@ -40,7 +40,7 @@ class BlogTableSeeder extends Seeder
             [
                 'title' => 'Giá Vàng, USD tiếp tục tăng mạnh 3',
                 'slug' => 'bai-viet-3',
-                'image' => 'image.png',
+                'image' => 'blog3.jpg',
                 'image_path' => 'image.png',
                 'teaser' => 'Giá vàng miếng SJC tiếp tục tăng mạnh trong buổi chiều 12/8 , tiến sát mốc 34 triệu đồng/ lượng , tỏng khi giá USD trên thị trường tự do cũng vượt mốc 22.000 đồng/USD',
                 'content' => 'nội dung bài viết 3',
@@ -52,7 +52,7 @@ class BlogTableSeeder extends Seeder
             [
                 'title' => 'Giá Vàng, USD tiếp tục tăng mạnh 4',
                 'slug' => 'bai-viet-4',
-                'image' => 'image.png',
+                'image' => 'blog4.jpg',
                 'image_path' => 'image.png',
                 'teaser' => 'Giá vàng miếng SJC tiếp tục tăng mạnh trong buổi chiều 12/8 , tiến sát mốc 34 triệu đồng/ lượng , tỏng khi giá USD trên thị trường tự do cũng vượt mốc 22.000 đồng/USD',
                 'content' => 'nội dung bài viết 4',
@@ -64,7 +64,7 @@ class BlogTableSeeder extends Seeder
             [
                 'title' => 'Giá Vàng, USD tiếp tục tăng mạnh 5',
                 'slug' => 'bai-viet-5',
-                'image' => 'image.png',
+                'image' => 'blog1.jpg',
                 'image_path' => 'image.png',
                 'teaser' => 'Giá vàng miếng SJC tiếp tục tăng mạnh trong buổi chiều 12/8 , tiến sát mốc 34 triệu đồng/ lượng , tỏng khi giá USD trên thị trường tự do cũng vượt mốc 22.000 đồng/USD',
                 'content' => 'nội dung bài viết 5',
@@ -76,7 +76,7 @@ class BlogTableSeeder extends Seeder
             [
                 'title' => 'Giá Vàng, USD tiếp tục tăng mạnh 6',
                 'slug' => 'bai-viet-6',
-                'image' => 'image.png',
+                'image' => 'blog2.jpg',
                 'image_path' => 'image.png',
                 'teaser' => 'Giá vàng miếng SJC tiếp tục tăng mạnh trong buổi chiều 12/8 , tiến sát mốc 34 triệu đồng/ lượng , tỏng khi giá USD trên thị trường tự do cũng vượt mốc 22.000 đồng/USD',
                 'content' => 'nội dung bài viết 6',
@@ -88,7 +88,7 @@ class BlogTableSeeder extends Seeder
             [
                 'title' => 'Giá Vàng, USD tiếp tục tăng mạnh 7',
                 'slug' => 'bai-viet-7',
-                'image' => 'image.png',
+                'image' => 'blog3.jpg',
                 'image_path' => 'image.png',
                 'teaser' => 'Giá vàng miếng SJC tiếp tục tăng mạnh trong buổi chiều 12/8 , tiến sát mốc 34 triệu đồng/ lượng , tỏng khi giá USD trên thị trường tự do cũng vượt mốc 22.000 đồng/USD',
                 'content' => 'nội dung bài viết 7',
@@ -100,7 +100,7 @@ class BlogTableSeeder extends Seeder
             [
                 'title' => 'Giá Vàng, USD tiếp tục tăng mạnh 8',
                 'slug' => 'bai-viet-8',
-                'image' => 'image.png',
+                'image' => 'blog4.jpg',
                 'image_path' => 'image.png',
                 'teaser' => 'Giá vàng miếng SJC tiếp tục tăng mạnh trong buổi chiều 12/8 , tiến sát mốc 34 triệu đồng/ lượng , tỏng khi giá USD trên thị trường tự do cũng vượt mốc 22.000 đồng/USD',
                 'content' => 'nội dung bài viết 8',
