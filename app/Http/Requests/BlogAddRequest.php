@@ -15,7 +15,7 @@ class BlogAddRequest extends FormRequest
     {
         return [
             'title' => "required|unique:blogs,title,".$this->id,
-            'teaser'      => 'required|min:10|max:255',
+            'teaser'      => 'required|min:10',
             'content'     => 'required|min:30',
             'category_id' => 'required',
             'image' => 'required',
@@ -29,7 +29,6 @@ class BlogAddRequest extends FormRequest
             'title.required'      => 'Tiêu đề không được để trống',
             'teaser.required'      => 'Giới thiệu ngắn không được để trống.',
             'teaser.min'           => 'Giới thiệu ngắn không được ít hơn :min ký tự.',
-            'teaser.max'           => 'Giới thiệu ngắn không được lớn hơn :max ký tự.',
             'image.required'       => 'Hình ảnh không được để trống.',
             'content.required'     => 'Nội dung không được để trống.',
             'content.min'          => 'Nội dung không được ít hơn :min ký tự.',

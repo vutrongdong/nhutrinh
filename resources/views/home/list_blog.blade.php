@@ -16,7 +16,7 @@
                         <div class="col-md-9">
                             <h3>{{ $blog->title }}</h3>
                             <p>{{ $blog->teaser }}</p>
-                            <a class="btn btn-primary" href="/blog/{{ $blog->slug }}">Chi tiet
+                            <a class="btn-1 btn-primary" href="/blog/{{ $blog->slug }}">Chi tiet
                                 <span class="glyphicon glyphicon-chevron-right"></span>
                             </a>
                         </div>

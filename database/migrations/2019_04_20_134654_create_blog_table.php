@@ -19,7 +19,7 @@ class CreateBlogTable extends Migration
             $table->string('slug');
             $table->string('image');
             $table->string('image_path');
-            $table->string('teaser');
+            $table->text('teaser');
             $table->integer('view')->default(0);
             $table->longText('content');
             $table->boolean('active')->default(true);
